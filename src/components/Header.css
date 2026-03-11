@@ -1,0 +1,165 @@
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo-img {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Header search (mobile-first: visible when passed) */
+.header-search {
+  flex: 1;
+  min-width: 0;
+  max-width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.header-search-icon {
+  font-size: 1rem;
+  opacity: 0.6;
+}
+
+.header-search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.header-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.header-search-input:focus {
+  outline: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+/* Mobile: show only profile icon and cart */
+.nav-help,
+.nav-signout {
+  display: none;
+}
+
+.nav-label {
+  display: none;
+}
+
+.nav-icon {
+  display: inline-block;
+  font-size: 1.25rem;
+}
+
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.5rem;
+  background: var(--bg);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+}
+
+.cart-icon {
+  font-size: 1.25rem;
+}
+
+.cart-count {
+  min-width: 1.25rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 999px;
+  text-align: center;
+}
+
+/* Desktop: show text labels, larger logo */
+@media (min-width: 769px) {
+  .header-inner {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .logo-img {
+    height: 4rem;
+  }
+
+  .header-search {
+    max-width: 320px;
+  }
+
+  .nav {
+    gap: 1.25rem;
+  }
+
+  .nav-help,
+  .nav-signout {
+    display: inline-flex;
+  }
+
+  .nav-label {
+    display: inline;
+  }
+
+  .nav-icon {
+    display: none;
+  }
+}

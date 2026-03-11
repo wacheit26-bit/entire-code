@@ -1,0 +1,11 @@
+@"
+node_modules/
+dist/
+.vite/
+.env
+.env.local
+.env.*.local
+server/.env
+.DS_Store
+*.log
+"@ | Set-Content -Path .gitignore -Encoding utf8
