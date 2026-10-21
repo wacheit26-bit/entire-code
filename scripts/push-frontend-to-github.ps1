@@ -45,7 +45,8 @@ if ($Status) {
   Write-Host "No frontend path changes to commit on local main."
 }
 
-if (-not (git remote get-url frontend 2>$null)) {
+$remoteList = @(git remote 2>$null)
+if ($remoteList -notcontains "frontend") {
   git remote add frontend $FrontendRemoteUrl
   Write-Host "Added git remote 'frontend' -> $FrontendRemoteUrl"
 }
