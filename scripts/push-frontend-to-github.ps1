@@ -87,17 +87,27 @@ if (-not $ArchiveArgs.Count) {
   Write-Error "Nothing to publish - no frontend paths found."
 }
 
-Get-ChildItem -Path $PublishDir -Force | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
+$stagingDir = Join-Path $PublishDir "_staging"
+if (Test-Path $stagingDir) {
+  Remove-Item -Recurse -Force $stagingDir -ErrorAction SilentlyContinue
+}
+New-Item -ItemType Directory -Path $stagingDir | Out-Null
 $zipFile = Join-Path $env:TEMP ("wache-frontend-{0}.zip" -f [guid]::NewGuid().ToString("n"))
 try {
   & git -C $Root archive --format=zip -o $zipFile HEAD -- @ArchiveArgs
   if (-not (Test-Path $zipFile)) {
     Write-Error "git archive failed to create $zipFile"
   }
-  Expand-Archive -Path $zipFile -DestinationPath $PublishDir -Force
+  Expand-Archive -Path $zipFile -DestinationPath $stagingDir -Force
+  Get-ChildItem -Path $stagingDir -Force | ForEach-Object {
+    Copy-Item -Path $_.FullName -Destination $PublishDir -Recurse -Force
+  }
 } finally {
   if (Test-Path $zipFile) {
     Remove-Item -Force $zipFile
+  }
+  if (Test-Path $stagingDir) {
+    Remove-Item -Recurse -Force $stagingDir -ErrorAction SilentlyContinue
   }
 }
 
