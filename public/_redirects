@@ -1,0 +1,2 @@
+# SPA fallback: React Router handles /admin, /cart, etc. on refresh
+/*    /index.html   200

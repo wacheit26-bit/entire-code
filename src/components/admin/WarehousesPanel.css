@@ -1,0 +1,325 @@
+/* Warehouse setup — extends Coursue-style dashboard (WarehouseDashboard.css) */
+
+.warehouses-panel {
+  padding-top: 0.25rem;
+}
+
+.wh-search--wide {
+  max-width: 420px;
+  flex: 1;
+}
+
+.wh-setup-back {
+  flex-shrink: 0;
+  font-size: 0.88rem;
+}
+
+.wh-setup-hero__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.88;
+}
+
+.wh-setup-alert {
+  margin-bottom: 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.wh-setup-alert--error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.wh-setup-alert--ok {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.wh-setup-form-panel__hint {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.wh-setup-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+  align-items: end;
+}
+
+.wh-setup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+}
+
+.wh-setup-field span {
+  font-weight: 600;
+  color: #475569;
+}
+
+.wh-setup-field input,
+.wh-setup-field select {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wh-setup-field input:focus,
+.wh-setup-field select:focus {
+  outline: none;
+  border-color: #a29bfe;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.12);
+}
+
+.wh-setup-form .wh-hero__btn {
+  justify-self: start;
+  margin-top: 0.15rem;
+}
+
+.wh-setup-form .wh-hero__btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.wh-setup-card {
+  cursor: default;
+}
+
+.wh-setup-card:hover {
+  transform: none;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+.wh-setup-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+}
+
+.wh-setup-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.wh-setup-btn--ghost {
+  background: #ede9fe;
+  color: #6c5ce7;
+}
+
+.wh-setup-btn--ghost:hover:not(:disabled) {
+  background: #ddd6fe;
+}
+
+.wh-setup-btn--danger {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.wh-setup-btn--danger:hover:not(:disabled) {
+  background: #ffe4e6;
+}
+
+.wh-setup-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.wh-setup-table {
+  margin-top: 0.85rem;
+}
+
+.wh-setup-table__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wh-setup-table__actions--wide {
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.wh-setup-btn--compact {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.72rem;
+}
+
+.wh-delete-warehouse-preview {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.wh-delete-warehouse-preview__stats {
+  margin: 0 0 0.85rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.wh-delete-warehouse-preview__stats strong {
+  color: #0f172a;
+}
+
+.wh-delete-warehouse-preview__warn {
+  color: #b45309;
+}
+
+.wh-delete-warehouse-preview__select {
+  margin-top: 0.35rem;
+}
+
+.wh-delete-warehouse-preview__ok {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #166534;
+}
+
+.wh-setup-table__action-btn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6c5ce7, #8b7cf7);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wh-setup-table__action-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px rgba(108, 92, 231, 0.35);
+}
+
+.wh-setup-checklist__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wh-setup-checklist__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.wh-setup-checklist__list li strong {
+  display: block;
+  font-size: 0.82rem;
+  color: #0f172a;
+  margin-bottom: 0.1rem;
+}
+
+.wh-setup-checklist__list li span:not(.wh-setup-checklist__icon) {
+  font-size: 0.72rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+.wh-setup-checklist__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.wh-setup-checklist__list li.is-done .wh-setup-checklist__icon {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.wh-setup-checklist__list li.is-done strong {
+  color: #166534;
+}
+
+@media (max-width: 640px) {
+  .wh-setup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .wh-setup-form .wh-hero__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.wh-edit-location__form {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 36rem;
+}
+
+.business-city-edit-input {
+  width: min(100%, 18rem);
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #c4b5fd;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: #fff;
+}
+
+.business-city-edit-input:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.15);
+}
+
+.wh-settings-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.wh-settings-section {
+  margin: 0;
+}
+
+.wh-settings-code {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.78rem;
+}

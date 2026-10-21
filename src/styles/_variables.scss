@@ -1,0 +1,143 @@
+/**
+ * Wache — SCSS variables for responsive system
+ * Align with responsive.css breakpoints and tokens.
+ */
+
+// ==========================================================================
+// BREAKPOINTS (min-width)
+// ==========================================================================
+$bp-mobile-sm: 320px;   // 320–374
+$bp-mobile-md: 375px;   // 375–424
+$bp-mobile-lg: 425px;   // 425–767
+$bp-tablet: 768px;      // 768–1023 portrait
+$bp-tablet-lg: 1024px;  // 1024–1279 landscape
+$bp-desktop: 1280px;   // 1280–1439
+$bp-desktop-lg: 1440px; // 1440–1919
+$bp-desktop-xl: 1920px; // 1920+
+
+// Breakpoint map for loop/mixin use
+$breakpoints: (
+  'mobile-sm': $bp-mobile-sm,
+  'mobile-md': $bp-mobile-md,
+  'mobile-lg': $bp-mobile-lg,
+  'tablet': $bp-tablet,
+  'tablet-lg': $bp-tablet-lg,
+  'desktop': $bp-desktop,
+  'desktop-lg': $bp-desktop-lg,
+  'desktop-xl': $bp-desktop-xl,
+);
+
+// ==========================================================================
+// CONTAINERS (max-width + padding per breakpoint)
+// ==========================================================================
+$container-max: (
+  'mobile-sm': 100%,
+  'mobile-md': 100%,
+  'mobile-lg': 100%,
+  'tablet': 720px,
+  'tablet-lg': 960px,
+  'desktop': 1200px,
+  'desktop-lg': 1320px,
+  'desktop-xl': 1400px,
+);
+
+$container-padding: (
+  'mobile-sm': 1rem,
+  'mobile-md': 1.125rem,
+  'mobile-lg': 1.25rem,
+  'tablet': 1.5rem,
+  'tablet-lg': 1.5rem,
+  'desktop': 1.5rem,
+  'desktop-lg': 2rem,
+  'desktop-xl': 2rem,
+);
+
+// ==========================================================================
+// GRID
+// ==========================================================================
+$grid-columns: (
+  'mobile-sm': 4,
+  'mobile-md': 4,
+  'mobile-lg': 4,
+  'tablet': 8,
+  'tablet-lg': 8,
+  'desktop': 12,
+  'desktop-lg': 12,
+  'desktop-xl': 12,
+);
+
+$gutter: (
+  'mobile-sm': 12px,
+  'mobile-md': 14px,
+  'mobile-lg': 16px,
+  'tablet': 20px,
+  'tablet-lg': 24px,
+  'desktop': 24px,
+  'desktop-lg': 32px,
+  'desktop-xl': 32px,
+);
+
+// ==========================================================================
+// TYPOGRAPHY (base font size per breakpoint for rem)
+// ==========================================================================
+$font-size-base: (
+  'mobile-sm': 14px,
+  'mobile-md': 14.5px,
+  'mobile-lg': 15px,
+  'tablet': 15px,
+  'tablet-lg': 16px,
+  'desktop': 16px,
+  'desktop-lg': 16px,
+  'desktop-xl': 16px,
+);
+
+// Fluid typography scale (clamp-ready values)
+$text-xs: clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem);
+$text-sm: clamp(0.8125rem, 0.775rem + 0.2vw, 0.875rem);
+$text-base: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+$text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+$text-xl: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+$text-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+$text-3xl: clamp(1.5rem, 1.25rem + 1.25vw, 1.875rem);
+$text-4xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.25rem);
+
+// ==========================================================================
+// SPACING SCALE (4px base unit)
+// ==========================================================================
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+
+$spacing: (
+  1: $space-1,
+  2: $space-2,
+  3: $space-3,
+  4: $space-4,
+  5: $space-5,
+  6: $space-6,
+  8: $space-8,
+  10: $space-10,
+  12: $space-12,
+  16: $space-16,
+);
+
+// ==========================================================================
+// TOUCH TARGETS
+// ==========================================================================
+$touch-min: 44px;
+$touch-min-rem: 2.75rem;
+
+// ==========================================================================
+// SAFE AREA (use with env() in CSS)
+// ==========================================================================
+$safe-area-top: env(safe-area-inset-top, 0px);
+$safe-area-right: env(safe-area-inset-right, 0px);
+$safe-area-bottom: env(safe-area-inset-bottom, 0px);
+$safe-area-left: env(safe-area-inset-left, 0px);

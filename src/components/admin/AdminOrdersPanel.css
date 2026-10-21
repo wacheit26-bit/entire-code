@@ -1,0 +1,613 @@
+/* Admin orders — aligned with Dashboard & Warehouse (Coursue-style) */
+
+.admin-orders-wrap {
+  padding-top: 0.25rem;
+}
+
+.admin-orders-panel__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.65rem;
+}
+
+.admin-orders-filters {
+  margin-bottom: 0.85rem;
+}
+
+/* Sticky header: KPI summary scrolls up and tucks under this block */
+.wh-hero.admin-orders-hero {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  box-shadow: 0 12px 40px rgba(108, 92, 231, 0.28);
+}
+
+.wh-hero.admin-orders-hero.is-stuck {
+  box-shadow:
+    0 12px 40px rgba(108, 92, 231, 0.28),
+    0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.admin-orders-kpis {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.admin-orders-hero__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.admin-orders-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.admin-orders-hero__month {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.admin-orders-hero__month span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.admin-orders-hero__month select {
+  min-width: 180px;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #1e1f2b;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.admin-orders-hero__pdf:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.admin-orders-panel__head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.admin-orders-report-filters {
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.admin-orders-pdf-btn {
+  border: 1px solid #6c5ce7;
+  background: #6c5ce7;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.22);
+}
+
+.admin-orders-pdf-btn:hover:not(:disabled) {
+  background: #5b4bd4;
+  border-color: #5b4bd4;
+}
+
+.admin-orders-pdf-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.admin-orders-kpis .wh-status-card__icon--all {
+  background: #ede9fe;
+  color: #6c5ce7;
+}
+
+.admin-orders-kpis .wh-status-card__icon--received {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.admin-orders-kpis .wh-status-card__icon--accepted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-orders-kpis .wh-status-card__icon--rejected {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.admin-orders-kpis .wh-status-card__icon--net {
+  background: #fff0e3;
+  color: #c2410c;
+}
+
+.admin-orders-wrap--table-scroll-only .admin-orders-panel--table-scroll-only {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: min(62vh, 34rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.admin-orders-commission {
+  border-radius: 18px;
+  padding: 0.6rem 0.85rem;
+  background: linear-gradient(135deg, #eefaf3 0%, #e3f5ea 100%);
+  border: 1px solid #d0ebda;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.admin-orders-commission__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.admin-orders-commission__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.45rem;
+}
+
+.admin-orders-commission__card {
+  border: 1px solid #cfe9d8;
+  background: #f2fbf5;
+  border-radius: 12px;
+  padding: 0.45rem 0.62rem;
+}
+
+.admin-orders-commission__card--amount {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.admin-orders-commission__label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #166534;
+}
+
+.admin-orders-commission__value {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #14532d;
+}
+
+.admin-orders-commission__hint {
+  margin: 0.22rem 0 0;
+  font-size: 0.72rem;
+  color: #166534;
+}
+
+.admin-orders-type-tabs,
+.admin-orders-status-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.admin-orders-type-tabs {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.admin-orders-tab {
+  border: 1px solid #e2e8f0;
+  background: #fafbff;
+  color: #475569;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-orders-tab:hover {
+  border-color: #c4b5fd;
+  background: #f5f3ff;
+  color: #6c5ce7;
+}
+
+.admin-orders-tab.is-active {
+  border-color: #6c5ce7;
+  background: #6c5ce7;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.25);
+}
+
+.admin-orders-table-wrap {
+  margin-top: 0.25rem;
+}
+
+.admin-orders-table-wrap--report {
+  overflow-y: visible;
+  min-height: 18.5rem; /* keep ~5-6 rows visible before scrolling */
+  max-height: none;
+}
+
+.admin-orders-table-wrap--single-scroll {
+  overflow-y: visible;
+}
+
+.admin-orders-table td {
+  font-size: 0.78rem;
+  color: #334155;
+}
+
+.admin-orders-table__date {
+  white-space: nowrap;
+  min-width: 6.5rem;
+  color: #334155;
+}
+
+.admin-orders-status-pill {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.admin-orders-status-pill--received {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.admin-orders-status-pill--accepted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-orders-status-pill--rejected {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.admin-orders-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.admin-orders-action-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.admin-orders-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-orders-action-btn--accept {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-orders-action-btn--accept:hover:not(:disabled) {
+  background: #bbf7d0;
+}
+
+.admin-orders-action-btn--reject {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.admin-orders-action-btn--reject:hover:not(:disabled) {
+  background: #fecdd3;
+}
+
+.admin-orders-action-btn--receipt {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.admin-orders-action-btn--receipt:hover:not(:disabled) {
+  background: #dbeafe;
+}
+
+.admin-orders-action-btn--delete {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.admin-orders-action-btn--delete:hover:not(:disabled) {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.admin-orders-state {
+  border-radius: 18px;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #eef0f4;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+.admin-orders-state--error p {
+  margin: 0;
+  color: #b91c1c;
+}
+
+/* Modal — purple accent */
+.admin-orders-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.admin-orders-modal {
+  width: min(100%, 480px);
+  max-height: min(90vh, 640px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 22px;
+  padding: 1.35rem 1.4rem;
+  box-shadow: 0 20px 50px rgba(108, 92, 231, 0.18);
+  border: 1px solid #ebe6ff;
+}
+
+.admin-orders-modal h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  color: #1e1f2b;
+}
+
+.admin-orders-modal-sub {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.admin-orders-modal-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.admin-orders-modal-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.admin-orders-modal-form input,
+.admin-orders-modal-form textarea,
+.admin-orders-modal-form select {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.admin-orders-modal-form input:focus,
+.admin-orders-modal-form textarea:focus {
+  outline: 2px solid rgba(108, 92, 231, 0.35);
+  outline-offset: 1px;
+}
+
+.admin-orders-modal-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.82rem;
+}
+
+.admin-orders-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.admin-orders-modal-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.admin-orders-modal-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.admin-orders-modal-btn--ghost {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.admin-orders-modal-btn--accept {
+  background: #6c5ce7;
+  color: #fff;
+}
+
+.admin-orders-modal-btn--accept:hover:not(:disabled) {
+  background: #5b4cdb;
+}
+
+.admin-orders-modal-btn--reject {
+  background: #be123c;
+  color: #fff;
+}
+
+.admin-orders-modal-btn--reject:hover:not(:disabled) {
+  background: #9f1239;
+}
+
+@media (max-width: 960px) {
+  .admin-orders-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .admin-orders-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-orders-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-orders-hero__month select,
+  .admin-orders-hero__pdf {
+    width: 100%;
+  }
+
+  .admin-orders-panel__head-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .admin-orders-pdf-btn {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+}
+
+.vendor-order-ime-fields {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.vendor-order-ime-fields__shop {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+  color: #0f172a;
+}
+
+.vendor-order-ime-fields__fallback {
+  color: #b45309;
+  font-weight: 500;
+}
+
+.vendor-order-ime-fields__lead,
+.vendor-order-ime-fields__hint,
+.vendor-order-ime-fields__count {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.vendor-order-ime-fields__list {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.vendor-order-ime-fields__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.vendor-order-ime-fields__option.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.vendor-order-ime-fields__option code {
+  font-size: 0.82rem;
+}
+
+.vendor-order-ime-fields__match {
+  margin: 0.35rem 0 0.65rem;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.vendor-order-ime-fields__color {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.vendor-order-ime-fields__warning {
+  margin-top: 0.65rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid #fdba74;
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.vendor-order-ime-fields__warning p {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+}
+
+.vendor-order-ime-fields__availability-lead {
+  margin-top: 0.65rem !important;
+  font-weight: 600;
+}
+
+.vendor-order-ime-fields__availability {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.86rem;
+}
+
+.vendor-order-ime-fields__availability li + li {
+  margin-top: 0.25rem;
+}

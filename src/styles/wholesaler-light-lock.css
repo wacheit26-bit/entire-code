@@ -1,0 +1,606 @@
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='light'] {
+    color-scheme: light;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-soft: #f1f5f9;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --accent: #007bff;
+    --accent-hover: #0069d9;
+    --input-bg: #ffffff;
+    --input-border: #cfd8e3;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  :root[data-theme='light'] .header-bar,
+  :root[data-theme='light'] .app-layout,
+  :root[data-theme='light'] .app-main--stock,
+  :root[data-theme='light'] .stock-list,
+  :root[data-theme='light'] .sidebar,
+  :root[data-theme='light'] .product-card,
+  :root[data-theme='light'] .stock-list__subnav,
+  :root[data-theme='light'] .stock-list__cart-panel,
+  :root[data-theme='light'] .notifications-page,
+  :root[data-theme='light'] .notifications-page__top,
+  :root[data-theme='light'] .cart-page-modern,
+  :root[data-theme='light'] .cart-sheet,
+  :root[data-theme='light'] .my-account,
+  :root[data-theme='light'] .my-account__card {
+    background: var(--surface) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+
+  :root[data-theme='light'] .app-main--stock,
+  :root[data-theme='light'] .stock-list,
+  :root[data-theme='light'] .notifications-page,
+  :root[data-theme='light'] .notifications-page__top,
+  :root[data-theme='light'] .cart-page-modern,
+  :root[data-theme='light'] .my-account {
+    background: var(--bg) !important;
+  }
+
+  :root[data-theme='light'] .header-search__input,
+  :root[data-theme='light'] .stock-list__qty-stepper button,
+  :root[data-theme='light'] .stock-list__cart-reopen,
+  :root[data-theme='light'] input,
+  :root[data-theme='light'] select,
+  :root[data-theme='light'] textarea {
+    background: var(--input-bg) !important;
+    color: var(--text) !important;
+    border-color: var(--input-border) !important;
+  }
+
+  :root[data-theme='light'] .product-card__title,
+  :root[data-theme='light'] .product-card__price,
+  :root[data-theme='light'] .notifications-page__title,
+  :root[data-theme='light'] .notif-offer-card__title,
+  :root[data-theme='light'] .cart-sheet__head h1,
+  :root[data-theme='light'] .cart-item-card__title,
+  :root[data-theme='light'] .my-account__title {
+    color: var(--text) !important;
+  }
+
+  :root[data-theme='light'] .notifications-page__subtitle,
+  :root[data-theme='light'] .notif-offer-card__summary,
+  :root[data-theme='light'] .cart-item-card__meta,
+  :root[data-theme='light'] .my-account__subtitle {
+    color: var(--text-muted) !important;
+  }
+
+  /* Ensure product picture zone stays light in wholesaler view */
+  :root[data-theme='light'] .stock-list__cards .product-card,
+  :root[data-theme='light'] .stock-list__cards .product-card--default,
+  :root[data-theme='light'] .stock-list__cards .product-card__image-section,
+  :root[data-theme='light'] .stock-list__cards .product-card__image-area,
+  :root[data-theme='light'] .stock-list__cards .product-card__image-wrapper,
+  :root[data-theme='light'] .stock-list__cards .product-card__image-container,
+  :root[data-theme='light'] .stock-list__cards .product-card__stock-indicator,
+  :root[data-theme='light'] .stock-list__cards .product-card__stock-badge {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  :root[data-theme='light'] .stock-list__cards .product-card__image-placeholder {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb) !important;
+    color: #9ca3af !important;
+  }
+
+  /*
+   * Admin dashboard: same white / light-gray shell as the wholesaler storefront.
+   * dark-mode.css applies a dark chrome under prefers-color-scheme: dark — undo it when
+   * Admin dashboard uses :root[data-theme="light"] (set in App.jsx for admin + salesperson roles).
+   */
+  :root[data-theme='light'] .admin-layout {
+    background: #f8fafc !important;
+    color-scheme: light;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-sidebar {
+    background: #ffffff !important;
+    border-right-color: #e4e7eb !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-brand {
+    border-bottom-color: #edf0f3 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-main {
+    background: transparent !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-topbar {
+    background: #ffffff !important;
+    border-bottom-color: #e5e7eb !important;
+    backdrop-filter: none !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-topbar h1,
+  :root[data-theme='light'] .admin-layout .admin-top-links,
+  :root[data-theme='light'] .admin-layout .admin-top-links a,
+  :root[data-theme='light'] .admin-layout .admin-top-notif-link {
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-topbar p {
+    color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-mobile-menu-btn {
+    background: #ffffff !important;
+    border-color: #dbe2ea !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-mobile-menu-btn span {
+    background: #334155 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-nav-btn {
+    color: #475569 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-nav-btn:hover {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-nav-btn.active {
+    background: #e8f1ff !important;
+    color: #1d6fd8 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-nav-btn.logout {
+    border-top-color: transparent !important;
+    color: #c2410c !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-sidebar__footer {
+    border-top-color: #edf0f3 !important;
+    background: #ffffff !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-top-signout-btn {
+    color: #c2410c !important;
+    background: #fff7ed !important;
+    border-color: #fdba74 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .admin-notif-badge {
+    background: #1d6fd8 !important;
+    color: #ffffff !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .dash-content {
+    background: transparent !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .dash-panel,
+  :root[data-theme='light'] .admin-layout .dash-kpi-card,
+  :root[data-theme='light'] .admin-layout .accounts-panel-lite,
+  :root[data-theme='light'] .admin-layout .add-card,
+  :root[data-theme='light'] .admin-layout .accounts-panel,
+  :root[data-theme='light'] .admin-layout .add-product-form,
+  :root[data-theme='light'] .admin-layout .create-salesman-form,
+  :root[data-theme='light'] .admin-layout .sales-team-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .dash-panel h3,
+  :root[data-theme='light'] .admin-layout .dash-kpi-card strong,
+  :root[data-theme='light'] .admin-layout .sales-table td,
+  :root[data-theme='light'] .admin-layout .sales-table th,
+  :root[data-theme='light'] .admin-layout .sales-team-table td,
+  :root[data-theme='light'] .admin-layout .sales-team-table th,
+  :root[data-theme='light'] .admin-layout .accounts-table-lite td,
+  :root[data-theme='light'] .admin-layout .accounts-table-lite th,
+  :root[data-theme='light'] .admin-layout .admin-direct-sale-pricing__table td,
+  :root[data-theme='light'] .admin-layout .admin-direct-sale-pricing__table th,
+  :root[data-theme='light'] .admin-layout .country-list li,
+  :root[data-theme='light'] .admin-layout .cap-row {
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .dash-panel p,
+  :root[data-theme='light'] .admin-layout .sales-team-panel__top p,
+  :root[data-theme='light'] .admin-layout .dash-kpi-card span,
+  :root[data-theme='light'] .admin-layout .orders-panel__month,
+  :root[data-theme='light'] .admin-layout .add-product-sub,
+  :root[data-theme='light'] .admin-layout .field span {
+    color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .dash-table th,
+  :root[data-theme='light'] .admin-layout .dash-table td {
+    border-top-color: #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .dash-table th {
+    background: #f8fafc !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .sales-team-table th,
+  :root[data-theme='light'] .admin-layout .sales-team-table td {
+    border-top-color: #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .sales-team-table th {
+    background: #f8fafc !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .cap-track,
+  :root[data-theme='light'] .admin-layout .analytics-stack__track,
+  :root[data-theme='light'] .admin-layout .analytics-bars__track {
+    background: #e2e8f0 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .analytics-stack__head strong,
+  :root[data-theme='light'] .admin-layout .analytics-stack__head span,
+  :root[data-theme='light'] .admin-layout .analytics-bars__label,
+  :root[data-theme='light'] .admin-layout .analytics-bars__value {
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-type-tab {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-type-tab:hover {
+    background: #e2e8f0 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-type-tab.active {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-status-tab {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-status-tab:hover {
+    background: #f1f5f9 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-status-tab.active {
+    border-color: #007bff !important;
+    background: color-mix(in srgb, #007bff 12%, #ffffff) !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .inventory-category-tab {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .inventory-category-tab:hover {
+    background: #f1f5f9 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .inventory-category-tab.active {
+    border-color: #007bff !important;
+    background: color-mix(in srgb, #007bff 12%, #ffffff) !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .accounts-tab-btn.active,
+  :root[data-theme='light'] .admin-layout .orders-status-tab.active {
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-panel__month select,
+  :root[data-theme='light'] .admin-layout .field input,
+  :root[data-theme='light'] .admin-layout .field select,
+  :root[data-theme='light'] .admin-layout .field textarea,
+  :root[data-theme='light'] .admin-layout .salesman-form-lite input,
+  :root[data-theme='light'] .admin-layout .salesman-form-lite select,
+  :root[data-theme='light'] .admin-layout .accounts-tab-btn,
+  :root[data-theme='light'] .admin-layout .accounts-refresh-btn,
+  :root[data-theme='light'] .admin-layout .accounts-activate-btn {
+    background: #ffffff !important;
+    border-color: #cfd8e3 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .upload-dropzone {
+    background: #f8fafc !important;
+    border-color: #cfd8e3 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .upload-dropzone.dragover {
+    border-color: #007bff !important;
+    background: #eff6ff !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .btn-upload,
+  :root[data-theme='light'] .admin-layout .settings-btn {
+    background: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .settings-form label,
+  :root[data-theme='light'] .admin-layout .settings-checkbox span {
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .settings-form input,
+  :root[data-theme='light'] .admin-layout .settings-form select {
+    background: #ffffff !important;
+    border-color: #cfd8e3 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .settings-ok {
+    background: #ecfdf5 !important;
+    border-color: #86efac !important;
+    color: #166534 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .btn-reset {
+    background: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-modal {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-modal-sub {
+    color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .admin-layout .orders-modal-form input,
+  :root[data-theme='light'] .admin-layout .orders-modal-form select,
+  :root[data-theme='light'] .admin-layout .orders-modal-form textarea {
+    background: #ffffff !important;
+    border-color: #cfd8e3 !important;
+    color: #0f172a !important;
+  }
+
+  /*
+   * Salesperson panel — keep light theme in dark mode (same approach as admin-layout).
+   */
+  :root[data-theme='light'] .sales-layout {
+    background: #f5f6f8 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-sidebar {
+    background: #ffffff !important;
+    border-right-color: #e4e7eb !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-brand {
+    border-bottom-color: #edf0f3 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-main,
+  :root[data-theme='light'] .sales-layout .sales-content {
+    background: transparent !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-topbar {
+    background: #ffffff !important;
+    border-bottom-color: #e5e7eb !important;
+    backdrop-filter: none !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-topbar h1,
+  :root[data-theme='light'] .sales-layout .sales-top-links,
+  :root[data-theme='light'] .sales-layout .sales-top-links a,
+  :root[data-theme='light'] .sales-layout .sales-top-notif-link,
+  :root[data-theme='light'] .sales-layout .sales-refresh-btn {
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-topbar p {
+    color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-mobile-menu-btn {
+    background: #ffffff !important;
+    border-color: #dbe2ea !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-mobile-menu-btn span {
+    background: #334155 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-nav-btn {
+    color: #475569 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-nav-btn:hover {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-nav-btn.active {
+    background: #e8f1ff !important;
+    color: #1d6fd8 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-nav-btn.logout {
+    border-top-color: #edf0f3 !important;
+    color: #c2410c !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-notif-badge {
+    background: #1d6fd8 !important;
+    color: #ffffff !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-shop-picker__label,
+  :root[data-theme='light'] .sales-layout .sales-shop-picker__single {
+    color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-shop-picker select,
+  :root[data-theme='light'] .sales-layout .sales-shop-picker__single {
+    color: #334155 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .wh-panel,
+  :root[data-theme='light'] .sales-layout .sales-panel,
+  :root[data-theme='light'] .sales-layout .sales-kpi-card,
+  :root[data-theme='light'] .sales-layout .sales-address-filter,
+  :root[data-theme='light'] .sales-layout .admin-direct-sale-panel,
+  :root[data-theme='light'] .sales-layout .admin-orders-panel,
+  :root[data-theme='light'] .sales-layout .sales-shops__card,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__warehouse-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-kpi-card strong,
+  :root[data-theme='light'] .sales-layout .sales-table td,
+  :root[data-theme='light'] .sales-layout .sales-table th,
+  :root[data-theme='light'] .sales-layout .wh-panel h2,
+  :root[data-theme='light'] .sales-layout .wh-panel h3,
+  :root[data-theme='light'] .sales-layout .sales-shop-dash__head h2,
+  :root[data-theme='light'] .sales-layout .sales-shop-inventory__head h2,
+  :root[data-theme='light'] .sales-layout .sales-portal-earnings__head h2,
+  :root[data-theme='light'] .sales-layout .sales-txn-receipts__head h2 {
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-kpi-card span,
+  :root[data-theme='light'] .sales-layout .wh-panel p,
+  :root[data-theme='light'] .sales-layout .sales-hint,
+  :root[data-theme='light'] .sales-layout .sales-muted,
+  :root[data-theme='light'] .sales-layout .sales-shop-dash__head p,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__picker-lead,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__meta,
+  :root[data-theme='light'] .sales-layout .sales-shop-inventory__meta,
+  :root[data-theme='light'] .sales-layout .sales-address-filter__label,
+  :root[data-theme='light'] .sales-layout .sales-address-filter__hint {
+    color: #64748b !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-table th,
+  :root[data-theme='light'] .sales-layout .sales-table td {
+    border-top-color: #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-table th {
+    background: #f8fafc !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .bulk-add-table th,
+  :root[data-theme='light'] .sales-layout .bulk-add-table td,
+  :root[data-theme='light'] .admin-layout .bulk-add-table th,
+  :root[data-theme='light'] .admin-layout .bulk-add-table td {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .bulk-add-table th,
+  :root[data-theme='light'] .admin-layout .bulk-add-table th {
+    background: #f8fafc !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .bulk-add-table-wrap,
+  :root[data-theme='light'] .sales-layout .bulk-add-table-scroll,
+  :root[data-theme='light'] .admin-layout .bulk-add-table-wrap,
+  :root[data-theme='light'] .admin-layout .bulk-add-table-scroll {
+    background: #ffffff !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-shop-dash__tab,
+  :root[data-theme='light'] .sales-layout .sales-address-tab,
+  :root[data-theme='light'] .sales-layout .sales-refresh-btn,
+  :root[data-theme='light'] .sales-layout .sales-btn-ghost,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__back,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__request-form input,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__request-form textarea,
+  :root[data-theme='light'] .sales-layout .sales-shop-picker select,
+  :root[data-theme='light'] .sales-layout .sales-portal-earnings__month select,
+  :root[data-theme='light'] .sales-layout .sales-shop-dash__month select,
+  :root[data-theme='light'] .sales-layout .inventory-filters select,
+  :root[data-theme='light'] .sales-layout .admin-direct-sale-panel input,
+  :root[data-theme='light'] .sales-layout .admin-direct-sale-panel select,
+  :root[data-theme='light'] .sales-layout .admin-direct-sale-panel textarea {
+    background: #ffffff !important;
+    border-color: #cfd8e3 !important;
+    color: #0f172a !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-shop-dash__tab:hover,
+  :root[data-theme='light'] .sales-layout .sales-address-tab:hover {
+    background: #f8fafc !important;
+    color: #475569 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-shop-dash__tab.is-active,
+  :root[data-theme='light'] .sales-layout .sales-address-tab.is-active {
+    background: #e8f1ff !important;
+    border-color: #93c5fd !important;
+    color: #1d6fd8 !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-accept-btn,
+  :root[data-theme='light'] .sales-layout .sales-btn-primary,
+  :root[data-theme='light'] .sales-layout .sales-view-store-link,
+  :root[data-theme='light'] .sales-layout .sales-general-inv__request-btn,
+  :root[data-theme='light'] .sales-layout .sales-shop-incoming__accept-btn,
+  :root[data-theme='light'] .sales-layout .sales-txn-receipts__print-btn {
+    background: #1982ea !important;
+    border-color: #1982ea !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-alert--ok {
+    background: #ecfdf5 !important;
+    border-color: #86efac !important;
+    color: #166534 !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-alert--err {
+    background: #fef2f2 !important;
+    border-color: #fecaca !important;
+    color: #b91c1c !important;
+  }
+
+  :root[data-theme='light'] .sales-layout .sales-shops__card.is-active {
+    border-color: #93c5fd !important;
+    background: #e8f1ff !important;
+  }
+}

@@ -1,0 +1,92 @@
+.sales-shop-incoming {
+  margin-bottom: 1rem;
+}
+
+.sales-shop-incoming__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.sales-shop-incoming__head h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.sales-shop-incoming__head p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.82rem;
+  max-width: 560px;
+}
+
+.sales-shop-incoming__batches {
+  margin-bottom: 1rem;
+}
+
+.sales-shop-incoming__batches h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.sales-shop-incoming__batch-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.sales-shop-incoming__batch-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.sales-shop-incoming__batch-list code {
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.15rem;
+}
+
+.sales-shop-incoming__batch-list span {
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.sales-shop-incoming__meta {
+  display: block;
+  color: #64748b;
+  font-size: 0.75rem;
+  margin-top: 0.15rem;
+}
+
+.sales-shop-incoming__accept-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.42rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: #0f766e;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sales-shop-incoming__accept-btn:hover:not(:disabled) {
+  background: #0d9488;
+}
+
+.sales-shop-incoming__accept-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}

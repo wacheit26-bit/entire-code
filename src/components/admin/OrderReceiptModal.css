@@ -1,0 +1,398 @@
+.order-receipt-modal__sub {
+  margin: 0 0 0.85rem;
+  font-size: 0.86rem;
+  color: #64748b;
+}
+
+.order-receipt-modal__error {
+  margin: 0 0 0.85rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.order-receipt-modal__success {
+  margin: 0 0 0.85rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+  color: #166534;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.order-receipt-modal__preview {
+  margin-bottom: 1rem;
+  min-width: 0;
+}
+
+.order-receipt-modal .admin-direct-sale-receipt {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Receipt modal renders in a portal outside .admin-layout — lock light table contrast */
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__head h4 {
+  color: #1e1f2b;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__party {
+  background: #f8fafc;
+  border: 1px solid #eef1f4;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__party span {
+  color: #64748b;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__party strong {
+  color: #0f172a;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines h5,
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units h5 {
+  color: #1e1f2b;
+  margin-bottom: 0.65rem;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table-wrap {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow-x: auto;
+  padding: 0.15rem 0.35rem;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table {
+  min-width: 640px;
+  background: #ffffff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table th,
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table td {
+  color: #334155 !important;
+  border-top-color: #eef1f4 !important;
+  background: #ffffff !important;
+  padding: 0.7rem 1rem !important;
+  line-height: 1.45;
+  vertical-align: top;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table th:first-child,
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table td:first-child {
+  padding-left: 1.15rem !important;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table th:last-child,
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table td:last-child {
+  padding-right: 1.15rem !important;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table th {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+  white-space: nowrap;
+}
+
+/* Units table — wider min width and column breathing room */
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table {
+  min-width: 920px;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table th:nth-child(1),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table td:nth-child(1) {
+  min-width: 8rem;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table th:nth-child(2),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table td:nth-child(2) {
+  min-width: 5rem;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(1),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(1) {
+  min-width: 2.5rem;
+  padding-right: 0.65rem !important;
+  text-align: center;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(2),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(2) {
+  min-width: 8rem;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(3),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(3),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(4),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(4),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(5),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(5) {
+  min-width: 4.5rem;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table th:nth-child(3),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table td:nth-child(3) {
+  min-width: 3.25rem;
+  text-align: center;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table th:nth-child(4),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table td:nth-child(4),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table th:nth-child(5),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__lines .sales-table.admin-direct-sale-receipt-table td:nth-child(5),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(7),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(7) {
+  min-width: 6.5rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table th:nth-child(6),
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__units .sales-table.admin-direct-sale-receipt-table td:nth-child(6) {
+  min-width: 9.5rem;
+  padding-left: 1.15rem !important;
+  padding-right: 1.15rem !important;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table tbody tr:hover td {
+  background: #fafbff !important;
+}
+
+.app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table code {
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.82em;
+  white-space: nowrap;
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__total.order-receipt-modal__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+  gap: 0.25rem 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: #334155;
+}
+
+.app-dialog--receipt .order-receipt-modal .order-receipt-modal__total-label {
+  flex: 0 0 auto;
+  font-weight: 600;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.app-dialog--receipt .order-receipt-modal .order-receipt-modal__total-amount {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: inherit;
+}
+
+.app-dialog--receipt .order-receipt-modal .order-receipt-modal__total-amount .fit-numeric {
+  display: inline-block;
+  vertical-align: baseline;
+  max-width: min(100%, 18rem);
+}
+
+.app-dialog--receipt .order-receipt-modal .admin-direct-sale-receipt__total strong {
+  font-size: inherit;
+}
+
+.order-receipt-modal .admin-direct-sale-receipt {
+  padding: 1.1rem 1.25rem;
+}
+
+.order-receipt-modal .admin-direct-sale-receipt-table {
+  font-size: 0.9rem;
+}
+
+.order-receipt-modal__edit {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  scroll-margin-top: 0.75rem;
+}
+
+.order-receipt-modal__edit h3,
+.order-receipt-modal__units-edit h4 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: #1e1f2b;
+}
+
+.order-receipt-modal__edit-hint {
+  margin: 0 0 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #64748b;
+}
+
+.order-receipt-modal__edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.order-receipt-modal__edit-grid label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.order-receipt-modal__edit-grid input,
+.order-receipt-modal__edit-grid select {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+  font: inherit;
+  font-size: 0.86rem;
+  color: #0f172a;
+  background: #fff;
+}
+
+.order-receipt-modal__edit-grid input:focus,
+.order-receipt-modal__edit-grid select:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.12);
+}
+
+.order-receipt-modal__units-edit {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.order-receipt-modal__unit-card {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.order-receipt-modal__unit-card-title {
+  margin: 0 0 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.order-receipt-modal__price-field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.order-receipt-modal__price-field--final {
+  margin-top: 1rem;
+  max-width: 280px;
+}
+
+.order-receipt-modal__price-field input {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+  font: inherit;
+  font-size: 0.86rem;
+  color: #0f172a;
+  background: #fff;
+}
+
+.order-receipt-modal__price-field input:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.12);
+}
+
+.order-receipt-modal__edit-total {
+  margin: 1rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e1f2b;
+}
+
+.order-receipt-modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.order-receipt-modal__btn {
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff;
+  color: #334155;
+}
+
+.order-receipt-modal__btn--ghost:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.order-receipt-modal__btn--primary {
+  border-color: #6c5ce7;
+  background: #6c5ce7;
+  color: #fff;
+}
+
+.order-receipt-modal__btn--primary:hover:not(:disabled) {
+  background: #5b4bd4;
+}
+
+.order-receipt-modal__btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+@media (max-width: 720px) {
+  .order-receipt-modal__edit-grid {
+    grid-template-columns: 1fr;
+  }
+}

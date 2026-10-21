@@ -1,0 +1,82 @@
+/**
+ * Modals that must stay visually light regardless of prefers-color-scheme
+ * (avoids dark OS theme / forced dark form controls on offer + order feedback dialogs).
+ */
+.wache-dialog-light {
+  color-scheme: light !important;
+}
+
+.order-feedback-modal-root.wache-dialog-light .order-feedback-modal {
+  background: #ffffff !important;
+  color: #111827 !important;
+  box-shadow:
+    0 25px 50px -12px rgba(15, 23, 42, 0.25),
+    0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+}
+
+.order-feedback-modal-root.wache-dialog-light .order-feedback-modal__title {
+  color: #0f172a !important;
+}
+
+.order-feedback-modal-root.wache-dialog-light .order-feedback-modal__message {
+  color: #475569 !important;
+}
+
+.order-feedback-modal-root.wache-dialog-light .order-feedback-modal__close:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-overlay.wache-dialog-light {
+    background: rgba(15, 23, 42, 0.58) !important;
+  }
+
+  .modal-overlay.wache-dialog-light .modal-content.offer-modal {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .wache-dialog-light .price-input,
+  .wache-dialog-light .quantity-input {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    caret-color: #111827 !important;
+  }
+
+  .wache-dialog-light .qty-control-btn {
+    background: #ffffff !important;
+    color: #374151 !important;
+    border-color: #d1d5db !important;
+  }
+
+  .wache-dialog-light .offer-modal__product-info {
+    background: #f9fafb !important;
+    border-color: #e5e7eb !important;
+  }
+
+  .wache-dialog-light .product-name {
+    color: #111827 !important;
+  }
+
+  .wache-dialog-light .offer-modal__info {
+    background: #f9fafb !important;
+    border-color: #e5e7eb !important;
+  }
+
+  .wache-dialog-light .info-item {
+    color: #4b5563 !important;
+  }
+
+  .wache-dialog-light .offer-modal__success {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .wache-dialog-light .offer-modal__success p {
+    color: #475569 !important;
+  }
+}

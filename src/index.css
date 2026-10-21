@@ -1,17 +1,52 @@
+/* Responsive system: breakpoints, containers, typography, spacing, safe area, dark mode */
+@import url('./styles/fit-numeric.css');
+@import url('./styles/responsive.css');
+@import url('./styles/table-scroll.css');
+@import url('./styles/dark-mode.css');
+@import url('./styles/dialog-light.css');
+@import url('./styles/wholesaler-light-lock.css');
+
 :root {
+  color-scheme: light;
+  /* Sticky bars sit below the main .header-bar */
+  --header-sticky-offset: 64px;
+  /* Admin + storefront: left column width (sidebar | main) */
+  --shell-sidebar-width: 232px;
+  --shell-sidebar-width-collapsed: 68px;
   --bg: #f8fafc;
   --surface: #ffffff;
+  --surface-soft: #f1f5f9;
   --border: #e2e8f0;
   --text: #0f172a;
   --text-muted: #64748b;
   --accent: #007bff;
   --accent-hover: #0069d9;
+  --input-bg: #ffffff;
+  --input-border: #cfd8e3;
+  --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.16);
   --accent-teal: #0d9488;
   --accent-teal-hover: #0f766e;
   --radius: 8px;
   --shadow: 0 1px 3px rgba(0,0,0,.06);
   --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+}
+
+html {
+  color-scheme: light;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --shell-sidebar-width: 208px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    /* .header-bar stacks into multiple rows */
+    --header-sticky-offset: 148px;
+  }
 }
 
 * {
@@ -21,10 +56,12 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
+  font-size: 1rem;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
+  line-height: var(--leading-normal, 1.5);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
 #root {
@@ -38,8 +75,11 @@ button {
   cursor: pointer;
 }
 
-input, select {
+input, select, textarea {
   font-family: inherit;
+  background: var(--input-bg);
+  color: var(--text);
+  border-color: var(--input-border);
 }
 
 a {

@@ -1,0 +1,658 @@
+/* SignupPage.css — fully responsive, info panel visible on all devices */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Container — scrollable when content exceeds viewport */
+.signup-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Main Wrapper - Card style */
+.signup-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left Panel - Form */
+.signup-form-panel {
+  flex: 1.5;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: white;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* Custom scrollbar for form panel */
+.signup-form-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.signup-form-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.signup-form-panel::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.signup-form-panel::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Header Section */
+.signup-header {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+.signup-logo {
+  height: clamp(52px, 10vw, 72px);
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.signup-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+.signup-description {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  color: #718096;
+  line-height: 1.5;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Error Message */
+.signup-error {
+  background: #fed7d7;
+  border-left: 4px solid #e53e3e;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: #c53030;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: none;
+}
+
+.signup-error--visible {
+  display: block;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Form Layout - Responsive Grid */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Single column on small screens */
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group--full {
+  grid-column: 1 / -1;
+}
+
+/* Form Labels */
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.required {
+  color: #e53e3e;
+  margin-left: 4px;
+}
+
+.optional {
+  color: #a0aec0;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* Form Inputs */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  background: #fafbfc;
+  color: #2d3748;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  .form-input,
+  .form-select,
+  .signup-submit,
+  .signin-btn {
+    min-height: 48px;
+  }
+}
+
+.form-input:hover,
+.form-select:hover {
+  border-color: #cbd5e0;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234a5568'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+/* Password Field */
+.password-wrapper {
+  position: relative;
+}
+
+.password-input {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0aec0;
+  transition: color 0.2s;
+  border-radius: 8px;
+}
+
+.password-toggle:hover {
+  color: #4a5568;
+  background: #f7fafc;
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-top: 0.25rem;
+}
+
+/* Submit Button */
+.signup-submit {
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  font-family: inherit;
+}
+
+.signup-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+}
+
+.signup-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.signup-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Right Panel - Info (Always visible) */
+.signup-info-panel {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background */
+.signup-info-panel::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.info-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.info-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.info-description {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  opacity: 0.95;
+  margin: 0 0 2rem 0;
+}
+
+/* Benefits List */
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.benefit-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Info Footer */
+.info-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-note {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin: 0 0 0.75rem 0;
+  text-align: center;
+}
+
+.signin-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.signin-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Tablet Responsive (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .signup-wrapper {
+    max-width: 95%;
+  }
+  
+  .signup-form-panel {
+    padding: 2rem;
+  }
+  
+  .signup-info-panel {
+    padding: 2rem;
+  }
+  
+  .info-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* Mobile Responsive (up to 768px) - Info panel remains visible */
+@media (max-width: 768px) {
+  .signup-wrapper {
+    flex-direction: column;
+    border-radius: 24px;
+    max-width: 100%;
+  }
+  
+  .signup-form-panel {
+    max-height: none;
+    overflow-y: visible;
+    padding: 1.5rem;
+  }
+  
+  /* Info panel stays visible, just reordered */
+  .signup-info-panel {
+    padding: 1.75rem 1.5rem;
+    width: 100%;
+  }
+  
+  .signup-title {
+    font-size: 1.5rem;
+  }
+  
+  .benefits-list {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Make benefits more compact on mobile */
+  .benefit-item {
+    font-size: 0.875rem;
+  }
+  
+  .benefit-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .benefit-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Small Mobile (up to 480px) - Info panel fully visible and optimized */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 0.75rem;
+    align-items: flex-start;
+  }
+  
+  .signup-wrapper {
+    border-radius: 20px;
+    margin-top: 0.5rem;
+  }
+  
+  .signup-form-panel {
+    padding: 1.25rem;
+  }
+  
+  /* Info panel visible but more compact */
+  .signup-info-panel {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .signup-title {
+    font-size: 1.375rem;
+  }
+  
+  .signup-logo {
+    height: clamp(44px, 12vw, 52px);
+  }
+  
+  .signup-description {
+    font-size: 0.8125rem;
+  }
+  
+  .form-row {
+    gap: 0.875rem;
+  }
+  
+  .signup-submit,
+  .signin-btn {
+    min-height: 48px;
+  }
+  
+  /* Make info panel more scannable on small screens */
+  .info-title {
+    font-size: 1.375rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .info-description {
+    font-size: 0.8125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .benefits-list {
+    gap: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .info-footer {
+    padding-top: 1.25rem;
+  }
+  
+  .signin-btn {
+    padding: 0.625rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Very Small Mobile (up to 360px) */
+@media (max-width: 360px) {
+  .signup-info-panel {
+    padding: 1.25rem;
+  }
+  
+  .benefit-item {
+    gap: 0.5rem;
+  }
+  
+  .benefit-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .info-description {
+    font-size: 0.75rem;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .signup-container {
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  
+  .signup-form-panel {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  
+  .signup-info-panel {
+    padding: 1.25rem;
+  }
+  
+  /* Horizontal benefits layout on landscape */
+  .benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .info-description {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Large screens (above 1400px) */
+@media (min-width: 1400px) {
+  .signup-wrapper {
+    max-width: 1300px;
+  }
+  
+  .signup-form-panel {
+    padding: 3rem;
+  }
+  
+  .signup-info-panel {
+    padding: 3rem;
+  }
+  
+  .form-row {
+    gap: 1.5rem;
+  }
+  
+  .signup-form {
+    gap: 1.5rem;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  .form-input,
+  .form-select,
+  .signup-submit,
+  .signin-btn,
+  .password-toggle {
+    cursor: default;
+  }
+  
+  .signup-submit:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible outline for accessibility */
+:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Better touch targets for buttons */
+button,
+[role="button"],
+input[type="submit"] {
+  touch-action: manipulation;
+}

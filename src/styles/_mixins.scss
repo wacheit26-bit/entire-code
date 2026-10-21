@@ -1,0 +1,151 @@
+/**
+ * Wache — SCSS mixins for responsive layout and theming
+ */
+
+@use 'variables' as *;
+
+// ==========================================================================
+// BREAKPOINT MIXIN
+// ==========================================================================
+@mixin respond-to($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media (min-width: map-get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint #{$name} not in $breakpoints.";
+  }
+}
+
+// Up/down helpers (min-width / max-width)
+@mixin min-width($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin max-width($bp) {
+  @media (max-width: $bp - 1px) {
+    @content;
+  }
+}
+
+// ==========================================================================
+// CONTAINER MIXIN
+// ==========================================================================
+@mixin container($padding: null) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @each $name, $max in $container-max {
+    @include respond-to($name) {
+      max-width: $max;
+      @if $padding and map-has-key($container-padding, $name) {
+        padding-left: map-get($container-padding, $name);
+        padding-right: map-get($container-padding, $name);
+      }
+    }
+  }
+  @if $padding == true or $padding == null {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+}
+
+// ==========================================================================
+// TYPOGRAPHY MIXINS
+// ==========================================================================
+@mixin heading-1 {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  line-height: var(--leading-tight);
+}
+
+@mixin heading-2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+
+@mixin heading-3 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+
+@mixin heading-4 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+}
+
+@mixin body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+@mixin body-sm {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+@mixin caption {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}
+
+// ==========================================================================
+// TOUCH TARGET MIXIN (min 44x44px)
+// ==========================================================================
+@mixin touch-target($min: $touch-min) {
+  min-width: $min;
+  min-height: $min;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+// ==========================================================================
+// SAFE AREA PADDING
+// ==========================================================================
+@mixin safe-area-padding {
+  padding-top: $safe-area-top;
+  padding-bottom: $safe-area-bottom;
+  padding-left: $safe-area-left;
+  padding-right: $safe-area-right;
+}
+
+// ==========================================================================
+// REDUCED MOTION (use to wrap animated elements)
+// ==========================================================================
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    transition: none !important;
+    @content;
+  }
+}
+
+// ==========================================================================
+// DARK MODE
+// ==========================================================================
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) & {
+      @content;
+    }
+  }
+}
+
+// ==========================================================================
+// HIGH-DPI BACKGROUND IMAGE
+// ==========================================================================
+@mixin retina-bg($url-1x, $url-2x) {
+  background-image: url($url-1x);
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url($url-2x);
+    background-size: 100% auto;
+  }
+}

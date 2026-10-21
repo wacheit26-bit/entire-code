@@ -1,32 +1,30 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import './Sidebar.css';
-import {
-  manufacturers,
-  models,
-  capacities,
-  colors,
-  conditions,
-  carriers,
-} from '../data/products';
+import SidebarFeaturedSpotlight from './SidebarFeaturedSpotlight';
+import { formatTitleCase } from '../utils/formatProductName';
 
 const FILTER_SECTIONS = [
-  { key: 'manufacturer', label: 'Manufacturer', options: manufacturers },
-  { key: 'model', label: 'Model', options: models },
-  { key: 'capacity', label: 'Capacity', options: capacities },
-  { key: 'color', label: 'Color', options: colors },
-  { key: 'condition', label: 'Condition', options: conditions },
-  { key: 'carrier', label: 'Carrier', options: carriers },
+  { key: 'brand', label: 'Brand', options: [] },
+  { key: 'capacity', label: 'Capacity', options: [] },
+  { key: 'product_type', label: 'Product type', options: [] },
 ];
 
-export default function Sidebar({ filterText, onFilterTextChange, filters, onFilterChange }) {
+export default function Sidebar({
+  onRequestPreorder,
+  canRequestPreorder = false,
+  filters,
+  onFilterChange,
+  brandOptions = [],
+  capacityOptions = [],
+  productTypeOptions = [],
+  catalogProducts = [],
+  productsLoading = false,
+  onFeaturedAddToCart,
+  canFeaturedAddToCart = true,
+}) {
   const [expanded, setExpanded] = useState({
-    ...FILTER_SECTIONS.reduce((acc, s) => ({ ...acc, [s.key]: true }), {}),
-    priceRange: false,
+    priceRange: true,
   });
-
-  const toggleSection = (key) => {
-    setExpanded((e) => ({ ...e, [key]: !e[key] }));
-  };
 
   const toggleFilter = (key, value) => {
     const current = filters[key] || [];
@@ -36,47 +34,76 @@ export default function Sidebar({ filterText, onFilterTextChange, filters, onFil
     onFilterChange({ ...filters, [key]: next });
   };
 
+  const setPrice = (field, raw) => {
+    onFilterChange({ ...filters, [field]: raw === '' ? undefined : raw });
+  };
+
   return (
     <aside className="sidebar">
-      <div className="sidebar-filter-input">
-        <label htmlFor="filter-search">Filter</label>
-        <input
-          id="filter-search"
-          type="text"
-          placeholder="Search..."
-          value={filterText}
-          onChange={(e) => onFilterTextChange(e.target.value)}
-        />
+      <div className="sidebar-preorder-block">
+        <h2 className="sidebar-preorder-block__title">Preorder</h2>
+        <p className="sidebar-preorder-block__intro">
+          Request products that are not listed yet. You will be asked for name, quantity, brand, type, and a short
+          description so we can process your request without back-and-forth.
+        </p>
+        <button
+          type="button"
+          className="sidebar-preorder-block__btn"
+          onClick={() => onRequestPreorder?.()}
+          disabled={!canRequestPreorder || !onRequestPreorder}
+        >
+          Start preorder request
+        </button>
+        {!canRequestPreorder ? (
+          <p className="sidebar-preorder-block__hint">Available when your vendor account is active.</p>
+        ) : null}
       </div>
 
-      {FILTER_SECTIONS.map(({ key, label, options }) => (
-        <div key={key} className="filter-section">
-          <button
-            type="button"
-            className="filter-section-header"
-            onClick={() => toggleSection(key)}
-            aria-expanded={expanded[key]}
-          >
-            {label}
-          </button>
-          {expanded[key] && (
-            <ul className="filter-options">
-              {options.map((opt) => (
-                <li key={opt}>
-                  <label className="filter-option">
-                    <input
-                      type="checkbox"
-                      checked={(filters[key] || []).includes(opt)}
-                      onChange={() => toggleFilter(key, opt)}
-                    />
-                    <span>{opt}</span>
-                  </label>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+      {FILTER_SECTIONS.map(({ key, label, options }) => {
+        const resolvedOptions =
+          key === 'brand'
+            ? brandOptions
+            : key === 'capacity'
+              ? capacityOptions
+              : key === 'product_type'
+                ? productTypeOptions
+                : options;
+
+        if ((key === 'capacity' || key === 'product_type') && resolvedOptions.length === 0) {
+          return null;
+        }
+        return (
+          <Fragment key={key}>
+            <div className="filter-section">
+              <div className="filter-section-title" role="heading" aria-level={3}>
+                {label}
+              </div>
+              <ul className="filter-options">
+                {resolvedOptions.map((opt) => (
+                  <li key={opt}>
+                    <label className="filter-option">
+                      <input
+                        type="checkbox"
+                        checked={(filters[key] || []).includes(opt)}
+                        onChange={() => toggleFilter(key, opt)}
+                      />
+                      <span className="filter-option-label">{formatTitleCase(opt, String(opt || ''))}</span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {key === 'brand' ? (
+              <SidebarFeaturedSpotlight
+                products={catalogProducts}
+                loading={productsLoading}
+                onAddToCart={onFeaturedAddToCart}
+                canAddToCart={canFeaturedAddToCart}
+              />
+            ) : null}
+          </Fragment>
+        );
+      })}
 
       <div className="filter-section">
         <button
@@ -85,13 +112,25 @@ export default function Sidebar({ filterText, onFilterTextChange, filters, onFil
           onClick={() => setExpanded((e) => ({ ...e, priceRange: !e.priceRange }))}
           aria-expanded={expanded.priceRange}
         >
-          Price Range
+          Price range
         </button>
         {expanded.priceRange && (
           <div className="filter-price">
-            <input type="number" placeholder="Min" />
+            <input
+              type="number"
+              min={0}
+              placeholder="Min"
+              value={filters.minPrice ?? ''}
+              onChange={(e) => setPrice('minPrice', e.target.value)}
+            />
             <span>–</span>
-            <input type="number" placeholder="Max" />
+            <input
+              type="number"
+              min={0}
+              placeholder="Max"
+              value={filters.maxPrice ?? ''}
+              onChange={(e) => setPrice('maxPrice', e.target.value)}
+            />
           </div>
         )}
       </div>

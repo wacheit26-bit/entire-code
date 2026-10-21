@@ -1,0 +1,257 @@
+.exchange-panel {
+  padding: 0 0 2rem;
+}
+
+.exchange-panel__filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.exchange-panel__filters--replacement {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.exchange-panel__replacement-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.exchange-panel__replacement-head h3 {
+  margin: 0;
+}
+
+.exchange-panel__back-btn {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  font: inherit;
+  background: #fff;
+  cursor: pointer;
+}
+
+.exchange-panel__back-btn:hover {
+  background: #f8fafc;
+}
+
+.exchange-panel__field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.exchange-panel__field select,
+.exchange-panel__field input {
+  width: 100%;
+  border: 1px solid #dbe2ea;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+  background: #fff;
+}
+
+.exchange-panel__notice,
+.exchange-panel__error,
+.exchange-panel__success {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+}
+
+.exchange-panel__notice {
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  color: #9a3412;
+}
+
+.exchange-panel__error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.exchange-panel__success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #047857;
+}
+
+.exchange-panel__ime-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.exchange-panel__ime-summary dt {
+  margin: 0 0 0.2rem;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.exchange-panel__ime-summary dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.exchange-panel__table-wrap {
+  overflow-x: auto;
+}
+
+.exchange-panel__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.exchange-panel__table th,
+.exchange-panel__table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.exchange-panel__table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  background: #f8fafc;
+}
+
+.exchange-panel__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.exchange-panel__actions--split {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.exchange-panel__replacement-selected {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  background: #f8fbff;
+}
+
+.exchange-panel__replacement-selected h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.exchange-panel__actions .btn-primary,
+.exchange-panel__actions .btn-secondary {
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.exchange-panel__actions .btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.exchange-panel__actions .btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.exchange-panel__actions .btn-secondary {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.exchange-panel__empty {
+  margin: 1rem 0;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.exchange-panel__price-banner {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+}
+
+.exchange-panel__price-banner--required {
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  color: #9a3412;
+}
+
+.exchange-panel__price-banner--refund {
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  color: #1e40af;
+}
+
+.exchange-panel__field-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.exchange-panel__field-error {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: #b91c1c;
+}
+
+.exchange-panel__required {
+  color: #b91c1c;
+}
+
+.exchange-panel__table tbody tr.is-selected {
+  background: #eff6ff;
+}
+
+.exchange-panel__select-btn {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.exchange-panel__select-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.exchange-panel__select-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .exchange-panel__filters {
+    grid-template-columns: 1fr;
+  }
+}

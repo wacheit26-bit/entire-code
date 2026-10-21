@@ -1,0 +1,103 @@
+/**
+ * Scrollable tables — keep every row reachable on mobile.
+ * Nested max-height viewports inside admin-main / sales-main often trap
+ * the last rows; on small screens we let the main panel scroll instead.
+ */
+
+:root {
+  --table-scroll-pad-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  --table-viewport-max-height: min(72vh, calc(100vh - 11rem));
+}
+
+/* Base: touch scrolling + room for the final row inside scroll regions */
+.inventory-table-viewport,
+.wh-inventory-table-wrap.inventory-table-viewport,
+.sales-table-wrap.inventory-table-viewport,
+.sales-reports-table-scroll,
+.admin-orders-wrap--table-scroll-only .admin-orders-panel--table-scroll-only,
+.table-wrap,
+.accounts-table-wrap-lite,
+.add-inventory-table-wrap,
+.bulk-add-table-wrap,
+.admin-direct-sale-pricing__table-wrap,
+.warehouse-hub__transfer-table-wrap,
+.sales-team-panel__table-wrap,
+.aod__lesson-table-wrap {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
+
+.inventory-table-viewport,
+.wh-inventory-table-wrap.inventory-table-viewport,
+.sales-table-wrap.inventory-table-viewport,
+.sales-reports-table-scroll {
+  padding-bottom: var(--table-scroll-pad-bottom);
+}
+
+/* Dialog / modal tables: keep inner scroll but avoid clipping the last row */
+.app-dialog [class*='table-wrap'],
+.app-dialog .sales-table-wrap,
+.app-dialog .inventory-table-viewport {
+  padding-bottom: var(--table-scroll-pad-bottom);
+}
+
+@media (max-width: 920px) {
+  :root {
+    --table-scroll-pad-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Single scroll context: main panel scrolls, tables grow to full height */
+  .inventory-table-viewport,
+  .wh-inventory-table-wrap.inventory-table-viewport,
+  .warehouse-hub__inventory .wh-inventory-table-wrap.inventory-table-viewport,
+  .sales-table-wrap.inventory-table-viewport,
+  .sales-reports-table-scroll,
+  .admin-orders-wrap--table-scroll-only .admin-orders-panel--table-scroll-only,
+  .table-wrap,
+  .accounts-table-wrap-lite,
+  .add-inventory-table-wrap,
+  .bulk-add-table-wrap,
+  .admin-direct-sale-pricing__table-wrap,
+  .warehouse-hub__transfer-table-wrap,
+  .sales-team-panel__table-wrap,
+  .aod__lesson-table-wrap,
+  .sales-table-wrap {
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: visible;
+    overflow-x: auto;
+    overscroll-behavior: auto;
+  }
+
+  /* Allow scroll chaining on the primary app scroll containers */
+  .admin-main,
+  .sales-main {
+    overscroll-behavior-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-main > .dash-panel,
+  .admin-main .wh-panel,
+  .admin-main .dash-content,
+  .sales-main,
+  .sales-reports-wrap,
+  .warehouse-hub {
+    padding-bottom: var(--table-scroll-pad-bottom);
+  }
+
+  /* Modals: bounded height with explicit bottom padding */
+  .app-dialog [class*='table-wrap'],
+  .app-dialog .sales-table-wrap,
+  .app-dialog .inventory-table-viewport {
+    max-height: min(55dvh, calc(100dvh - 14rem));
+    overflow-y: auto;
+    overflow-x: auto;
+    overscroll-behavior: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --table-scroll-pad-bottom: calc(2.75rem + env(safe-area-inset-bottom, 0px));
+  }
+}

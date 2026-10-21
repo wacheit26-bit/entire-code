@@ -1,0 +1,35 @@
+.sales-txn-receipts {
+  margin-top: 1rem;
+}
+
+.sales-txn-receipts__head h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.sales-txn-receipts__head p {
+  margin: 0 0 1rem;
+  color: #64748b;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.sales-txn-receipts__table code {
+  font-size: 0.78rem;
+}
+
+.sales-txn-receipts__print-btn {
+  border: 1px solid #93c5fd;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 8px;
+  padding: 0.38rem 0.65rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sales-txn-receipts__print-btn:hover {
+  background: #dbeafe;
+}

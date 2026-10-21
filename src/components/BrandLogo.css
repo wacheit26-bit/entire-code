@@ -1,0 +1,14 @@
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  line-height: 0;
+}
+
+.brand-logo__img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  background: #ffffff;
+}

@@ -1,0 +1,66 @@
+.expenses-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.expenses-panel__head h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+}
+
+.expenses-panel__lead {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.875rem;
+  max-width: 42rem;
+}
+
+.expenses-panel__hint {
+  margin: 0 0 1rem;
+}
+
+.expenses-panel__form {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.expenses-panel__field--wide {
+  grid-column: 1 / -1;
+}
+
+.expenses-panel__field--wide textarea {
+  width: 100%;
+  min-height: 4.5rem;
+  resize: vertical;
+  border: 1px solid #dbe2ea;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+}
+
+.expenses-panel__table-wrap {
+  margin-top: 0.5rem;
+}
+
+.expenses-panel__table td,
+.expenses-panel__table th {
+  vertical-align: top;
+}
+
+.expenses-panel__table td:nth-child(3) {
+  max-width: 18rem;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .expenses-panel__head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

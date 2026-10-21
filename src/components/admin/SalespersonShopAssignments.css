@@ -1,0 +1,45 @@
+.shop-assign {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: #f8f7ff;
+  border: 1px solid #e8e4ff;
+}
+
+.shop-assign__hint {
+  margin: 0 0 0.65rem;
+  font-size: 0.88rem;
+  color: #4a4568;
+}
+
+.shop-assign__list {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.shop-assign__list li {
+  padding: 0.35rem 0;
+}
+
+.shop-assign__list label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.shop-assign__error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.shop-assign__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

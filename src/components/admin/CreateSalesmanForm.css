@@ -1,0 +1,241 @@
+.sales-team-panel {
+  background: #fff;
+  border: 1px solid #e6e9ed;
+  border-radius: 10px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.sales-team-panel__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.sales-team-panel__top h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.sales-team-panel__top p {
+  margin: 0.2rem 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.sales-team-panel__create-btn {
+  border: 1px solid #1982ea;
+  background: #1982ea;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.sales-team-panel__alert {
+  margin: 0;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.sales-team-panel__alert--err {
+  background: #fff1f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.sales-team-panel__alert--ok {
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+  color: #166534;
+}
+
+.salesman-form-lite {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.salesman-form-lite label {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.salesman-form-lite input,
+.salesman-form-lite select {
+  border: 1px solid #dbe2ea;
+  border-radius: 8px;
+  padding: 0.48rem 0.6rem;
+  font-size: 0.8rem;
+  background: #fff;
+}
+
+.salesman-form-lite button {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  align-self: end;
+}
+
+.sales-team-panel__table-wrap {
+  overflow-x: auto;
+}
+
+.sales-team-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.sales-team-table th,
+.sales-team-table td {
+  text-align: left;
+  border-top: 1px solid #eef1f4;
+  padding: 0.58rem 0.55rem;
+  font-size: 0.8125rem;
+}
+
+.sales-team-table th {
+  color: #6b7280;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sales-team-table__link {
+  border: none;
+  background: none;
+  color: #6c5ce7;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.sales-team-table__phones {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.sales-team-table__phone-sub {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.sales-team-table__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.sales-team-table__btn {
+  border: 1px solid #dbe2ea;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sales-team-table__btn--ghost:hover {
+  border-color: #c4b5fd;
+  color: #5b4cdb;
+}
+
+.sales-team-table__btn--danger {
+  border-color: #fecaca;
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.sales-team-table__btn--danger:hover {
+  background: #ffe4e6;
+}
+
+.sales-team-table__btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.sales-team-table__optional {
+  font-weight: 500;
+  color: #64748b;
+}
+
+.salesman-form-lite--modal {
+  margin-top: 0.35rem;
+}
+
+.salesman-form-lite__role-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.salesman-form-lite__shops {
+  grid-column: 1 / -1;
+  border: 1px solid #e8e4ff;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  margin: 0;
+}
+
+.salesman-form-lite__shops legend {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4a4568;
+  padding: 0 0.25rem;
+}
+
+.salesman-form-lite__shops ul {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.35rem;
+}
+
+.salesman-form-lite__shops label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.salesman-form-lite__shops-empty {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+@media (max-width: 980px) {
+  .salesman-form-lite {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .salesman-form-lite {
+    grid-template-columns: 1fr;
+  }
+}

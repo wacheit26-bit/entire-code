@@ -1,0 +1,33 @@
+.product-travel-route {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.35rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #475569;
+}
+
+.product-travel-route--block {
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.product-travel-route__from {
+  font-weight: 600;
+  color: #334155;
+}
+
+.product-travel-route__arrow {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.product-travel-route__to {
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.product-travel-route--compact {
+  font-size: 0.72rem;
+}

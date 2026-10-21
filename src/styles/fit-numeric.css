@@ -1,0 +1,62 @@
+/* Auto-fit numeric text — pairs with FitNumericText / MoneyXaf */
+
+.fit-numeric {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+  /* Initial shrink by character count before JS fine-tuning */
+  font-size: min(1em, calc(1em * (11 / max(var(--num-ch, 11), 7))));
+}
+
+.fit-numeric__inner {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+td .fit-numeric,
+th .fit-numeric {
+  width: 100%;
+}
+
+strong .fit-numeric,
+.dash-kpi-card strong .fit-numeric,
+.wh-status-card__value .fit-numeric,
+.admin-orders-commission__value .fit-numeric,
+.admin-orders-commission__value.fit-numeric,
+.sales-kpi-card strong .fit-numeric {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.wh-status-card__value,
+.dash-kpi-card strong,
+.admin-orders-commission__value {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Numeric table columns — allow cells to shrink and clip gracefully */
+td:has(> .fit-numeric),
+th:has(> .fit-numeric),
+td.fit-numeric-cell,
+th.fit-numeric-cell {
+  max-width: 11rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+td.fit-numeric-cell--wide,
+th.fit-numeric-cell--wide {
+  max-width: 14rem;
+}
+
+td.fit-numeric-cell--compact,
+th.fit-numeric-cell--compact {
+  max-width: 8rem;
+}

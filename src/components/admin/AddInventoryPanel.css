@@ -1,0 +1,238 @@
+.add-inventory-upload-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.add-inventory-hint {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.bulk-add-panel--embedded {
+  margin-top: 0;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.bulk-add-panel--embedded .bulk-add-table textarea {
+  min-width: 0;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 767px) {
+  .add-inventory-upload-tabs {
+    flex-direction: column;
+  }
+
+  .add-inventory-upload-tabs .admin-orders-tab {
+    width: 100%;
+    min-height: 2.75rem;
+    text-align: center;
+  }
+
+  .bulk-add-panel--embedded .add-product-sub,
+  .bulk-add-panel--embedded .add-product-warehouse-hint {
+    font-size: 0.82rem;
+  }
+}
+
+.add-inventory-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: #f5f6fa;
+  min-height: 100%;
+}
+
+.add-inventory-hero__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.add-inventory-kpis {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.add-inventory-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.add-inventory-alert {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.add-inventory-alert--error {
+  color: #b91c1c;
+  background: #fff1f2;
+  border: 1px solid #fecaca;
+}
+
+.add-inventory-alert--ok {
+  color: #166534;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+.add-inventory-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.add-inventory-row {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.add-inventory-row--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.add-inventory-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.add-inventory-field span,
+.add-inventory-field__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.add-inventory-field input,
+.add-inventory-field select,
+.add-inventory-field textarea {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.add-inventory-field input:focus,
+.add-inventory-field select:focus,
+.add-inventory-field textarea:focus {
+  outline: 2px solid rgba(108, 92, 231, 0.35);
+  outline-offset: 1px;
+}
+
+.add-inventory-images {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.add-inventory-dropzone {
+  border: 2px dashed #c4b5fd;
+  border-radius: 14px;
+  padding: 1.25rem;
+  background: #faf8ff;
+  color: #6c5ce7;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-inventory-dropzone.is-dragover {
+  border-color: #6c5ce7;
+  background: #f3f0ff;
+}
+
+.add-inventory-file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.add-inventory-file-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.add-inventory-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.35rem;
+  border-top: 1px solid #eef0f4;
+}
+
+.add-inventory-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.add-inventory-btn--primary {
+  background: #6c5ce7;
+  color: #fff;
+}
+
+.add-inventory-btn--primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.add-inventory-btn--ghost {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.add-inventory-search {
+  max-width: 420px;
+}
+
+.add-inventory-table-wrap {
+  overflow-x: auto;
+}
+
+.add-inventory-table {
+  min-width: 720px;
+}
+
+.add-inventory-pill {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.add-inventory-pill--listed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.add-inventory-pill--draft {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+@media (max-width: 960px) {
+  .add-inventory-kpis,
+  .add-inventory-row,
+  .add-inventory-row--4 {
+    grid-template-columns: 1fr;
+  }
+}

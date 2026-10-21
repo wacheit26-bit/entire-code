@@ -1,0 +1,10 @@
+.wh-pricing-modal .edit-product-modal__title {
+  font-size: 1.1rem;
+}
+
+.wh-pricing-modal__lead {
+  margin: 0 0 1rem;
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.45;
+}

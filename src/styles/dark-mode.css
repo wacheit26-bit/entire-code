@@ -1,0 +1,621 @@
+@media (prefers-color-scheme: dark) {
+  /* Admin panel theme (inspired by provided reference image) */
+  .admin-layout {
+    background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(67, 56, 202, 0.16), transparent 45%),
+      radial-gradient(1000px 500px at 90% 0%, rgba(29, 120, 255, 0.14), transparent 50%),
+      #070b16 !important;
+  }
+
+  .sales-layout {
+    background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(67, 56, 202, 0.16), transparent 45%),
+      radial-gradient(1000px 500px at 90% 0%, rgba(29, 120, 255, 0.14), transparent 50%),
+      #070b16 !important;
+  }
+
+  .admin-sidebar {
+    background: linear-gradient(180deg, #0b1224 0%, #090f1f 100%) !important;
+    border-right-color: #1a2640 !important;
+    box-shadow: inset -1px 0 0 rgba(70, 93, 140, 0.22);
+  }
+
+  .sales-sidebar {
+    background: linear-gradient(180deg, #0b1224 0%, #090f1f 100%) !important;
+    border-right-color: #1a2640 !important;
+    box-shadow: inset -1px 0 0 rgba(70, 93, 140, 0.22);
+  }
+
+  .admin-brand {
+    border-bottom-color: #1a2640 !important;
+  }
+
+  .sales-brand {
+    border-bottom-color: #1a2640 !important;
+  }
+
+  .admin-main {
+    background: transparent !important;
+  }
+
+  .sales-main {
+    background: transparent !important;
+  }
+
+  .admin-topbar {
+    background: rgba(11, 17, 33, 0.82) !important;
+    border-bottom-color: #1a2640 !important;
+    backdrop-filter: blur(8px);
+  }
+
+  .sales-topbar {
+    background: rgba(11, 17, 33, 0.82) !important;
+    border-bottom-color: #1a2640 !important;
+    backdrop-filter: blur(8px);
+  }
+
+  .admin-topbar h1,
+  .admin-top-links,
+  .admin-top-links a,
+  .admin-top-notif-link {
+    color: #edf4ff !important;
+  }
+
+  .sales-topbar h1,
+  .sales-top-links,
+  .sales-top-links a,
+  .sales-refresh-btn {
+    color: #edf4ff !important;
+  }
+
+  .admin-topbar p {
+    color: #9db0d5 !important;
+  }
+
+  .sales-topbar p {
+    color: #9db0d5 !important;
+  }
+
+  .admin-mobile-menu-btn {
+    background: #101a31 !important;
+    border-color: #2b3d60 !important;
+  }
+
+  .admin-mobile-menu-btn span {
+    background: #d6e4ff !important;
+  }
+
+  .admin-sidebar-backdrop {
+    background: rgba(2, 6, 23, 0.7) !important;
+  }
+
+  .admin-nav-btn {
+    color: #9fb2d6 !important;
+    border: 1px solid transparent;
+  }
+
+  .sales-nav-btn {
+    color: #9fb2d6 !important;
+    border: 1px solid transparent;
+  }
+
+  .admin-nav-btn:hover {
+    background: rgba(56, 86, 144, 0.22) !important;
+    color: #dbe7ff !important;
+  }
+
+  .sales-nav-btn:hover {
+    background: rgba(56, 86, 144, 0.22) !important;
+    color: #dbe7ff !important;
+  }
+
+  .admin-nav-btn.active {
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.25) 0%, rgba(67, 56, 202, 0.2) 100%) !important;
+    color: #e8efff !important;
+    border-color: rgba(96, 165, 250, 0.5) !important;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.24), 0 10px 22px rgba(27, 58, 128, 0.35);
+  }
+
+  .sales-nav-btn.active {
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.25) 0%, rgba(67, 56, 202, 0.2) 100%) !important;
+    color: #e8efff !important;
+    border-color: rgba(96, 165, 250, 0.5) !important;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.24), 0 10px 22px rgba(27, 58, 128, 0.35);
+  }
+
+  .admin-nav-btn.logout {
+    border-top-color: transparent !important;
+    color: #fca5a5 !important;
+  }
+
+  .admin-sidebar__footer {
+    border-top-color: #1a2640 !important;
+    background: inherit;
+  }
+
+  .admin-top-signout-btn {
+    color: #fca5a5 !important;
+    background: rgba(127, 29, 29, 0.35) !important;
+    border-color: rgba(248, 113, 113, 0.45) !important;
+  }
+
+  .sales-nav-btn.logout {
+    border-top-color: #1a2640 !important;
+    color: #fca5a5 !important;
+  }
+
+  .dash-content {
+    background: transparent !important;
+  }
+
+  .sales-content {
+    background: transparent !important;
+  }
+
+  .dash-panel,
+  .dash-kpi-card,
+  .sales-address-filter,
+  .sales-panel,
+  .sales-kpi-card,
+  .sales-team-panel,
+  .accounts-panel-lite,
+  .add-card {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(10, 17, 31, 0.95) 100%) !important;
+    border-color: #22314f !important;
+    box-shadow: 0 8px 28px rgba(2, 8, 23, 0.45) !important;
+  }
+
+  .dash-panel h3,
+  .dash-kpi-card strong,
+  .sales-kpi-card strong,
+  .sales-team-panel h3,
+  .sales-table td,
+  .sales-table th,
+  .sales-team-table td,
+  .sales-team-table th,
+  .accounts-table-lite td,
+  .accounts-table-lite th,
+  .country-list li,
+  .cap-row {
+    color: #e6eeff !important;
+  }
+
+  .dash-panel p,
+  .dash-kpi-card span,
+  .sales-address-filter__label,
+  .sales-kpi-card span,
+  .sales-team-panel__top p,
+  .orders-panel__month,
+  .accounts-table-lite th,
+  .add-product-sub,
+  .field span {
+    color: #97abd0 !important;
+  }
+
+  .dash-table th,
+  .dash-table td,
+  .sales-table th,
+  .sales-table td,
+  .sales-team-table th,
+  .sales-team-table td,
+  .accounts-table-lite th,
+  .accounts-table-lite td {
+    border-top-color: #1d2a45 !important;
+  }
+
+  .dash-table th,
+  .sales-table th {
+    background: rgba(13, 22, 39, 0.9) !important;
+  }
+
+  /* Accounts tab: keep table header row light for readability */
+  .accounts-table-lite thead th {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Pricing catalog table: light header + body for readability on dark admin shell */
+  .admin-direct-sale-pricing__table thead th {
+    background: #f1f5f9 !important;
+    color: #334155 !important;
+    border-bottom-color: #cbd5e1 !important;
+  }
+
+  .admin-direct-sale-pricing__table tbody td {
+    color: #0f172a !important;
+    background: #ffffff !important;
+    border-top-color: #e2e8f0 !important;
+  }
+
+  .admin-direct-sale-pricing__table-wrap {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Receipt modal (Reports): white dialog — keep line-item tables readable */
+  .app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table thead th {
+    background: #f8fafc !important;
+    color: #475569 !important;
+    border-top-color: #e2e8f0 !important;
+  }
+
+  .app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table tbody td {
+    color: #334155 !important;
+    background: #ffffff !important;
+    border-top-color: #eef1f4 !important;
+  }
+
+  .app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table tbody tr:hover td {
+    background: #fafbff !important;
+  }
+
+  .app-dialog--receipt .order-receipt-modal .sales-table.admin-direct-sale-receipt-table code {
+    color: #0f172a !important;
+    background: #f1f5f9 !important;
+  }
+
+  .cap-track {
+    background: #172742 !important;
+  }
+
+  .analytics-stack__track,
+  .analytics-bars__track {
+    background: #172742 !important;
+  }
+
+  .cap-fill {
+    background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%) !important;
+  }
+
+  .analytics-bars__fill {
+    background: linear-gradient(180deg, #2d66f6 0%, #4f46e5 100%) !important;
+  }
+
+  .analytics-stack__head strong,
+  .analytics-stack__head span,
+  .analytics-bars__label,
+  .analytics-bars__value {
+    color: #c6d6f2 !important;
+  }
+
+  .orders-status-tab.active,
+  .accounts-tab-btn.active {
+    background: linear-gradient(180deg, #2d66f6 0%, #4f46e5 100%) !important;
+    border-color: #7aa2ff !important;
+    color: #f3f7ff !important;
+    box-shadow: 0 0 0 1px rgba(125, 166, 255, 0.28);
+  }
+
+  .orders-panel__month select,
+  .field input,
+  .field select,
+  .field textarea,
+  .salesman-form-lite input,
+  .salesman-form-lite select,
+  .accounts-tab-btn,
+  .accounts-refresh-btn,
+  .accounts-activate-btn {
+    background: #0f1a30 !important;
+    border-color: #2b3d60 !important;
+    color: #e5efff !important;
+  }
+
+  .upload-dropzone {
+    background: #0f1a30 !important;
+    border-color: #2b3d60 !important;
+  }
+
+  .upload-dropzone.dragover {
+    border-color: #4f7cff !important;
+    background: #142445 !important;
+  }
+
+  .btn-upload,
+  .salesman-form-lite button,
+  .settings-btn {
+    background: linear-gradient(180deg, #2d66f6 0%, #4f46e5 100%) !important;
+    border-color: #7aa2ff !important;
+    color: #f3f7ff !important;
+  }
+
+  .sales-accept-btn,
+  .sales-btn-primary {
+    background: linear-gradient(180deg, #2d66f6 0%, #4f46e5 100%) !important;
+    border-color: #7aa2ff !important;
+    color: #f3f7ff !important;
+  }
+
+  .sales-refresh-btn,
+  .sales-btn-ghost {
+    background: #111b31 !important;
+    border-color: #2b3d60 !important;
+    color: #c6d6f2 !important;
+  }
+
+  .sales-address-filter__hint {
+    color: #7b8fb8 !important;
+  }
+
+  .sales-address-tab {
+    background: #111b31 !important;
+    border-color: #2b3d60 !important;
+    color: #c6d6f2 !important;
+  }
+
+  .sales-address-tab:hover {
+    background: rgba(56, 86, 144, 0.22) !important;
+    border-color: #3d5280 !important;
+  }
+
+  .sales-address-tab.is-active {
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.25) 0%, rgba(67, 56, 202, 0.2) 100%) !important;
+    border-color: rgba(96, 165, 250, 0.5) !important;
+    color: #e8efff !important;
+  }
+
+  .sales-modal {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.94) 0%, rgba(10, 17, 31, 0.97) 100%) !important;
+    border-color: #22314f !important;
+    color: #e6eeff !important;
+  }
+
+  .sales-modal-sub {
+    color: #97abd0 !important;
+  }
+
+  .sales-modal-form input,
+  .sales-modal-form select,
+  .sales-modal-form textarea,
+  .settings-form input,
+  .settings-form select {
+    background: #0f1a30 !important;
+    border-color: #2b3d60 !important;
+    color: #e5efff !important;
+  }
+
+  .settings-form label,
+  .settings-checkbox span {
+    color: #c6d6f2 !important;
+  }
+
+  .settings-ok {
+    background: rgba(5, 150, 105, 0.2) !important;
+    border-color: rgba(52, 211, 153, 0.5) !important;
+    color: #86efac !important;
+  }
+
+  .btn-reset {
+    background: #111b31 !important;
+    border-color: #2b3d60 !important;
+    color: #c6d6f2 !important;
+  }
+
+  .admin-notif-badge {
+    background: linear-gradient(180deg, #2d66f6 0%, #4f46e5 100%) !important;
+    color: #f3f7ff !important;
+  }
+
+  /* Shell and navigation */
+  .header-bar {
+    background: var(--surface);
+    border-bottom-color: var(--border);
+  }
+
+  .stock-list__subnav {
+    background: var(--surface) !important;
+    border-bottom-color: var(--border) !important;
+  }
+
+  .header-search__input {
+    background: var(--input-bg);
+    color: var(--text);
+  }
+
+  .header-search__input:focus {
+    background: var(--surface);
+  }
+
+  .app-layout,
+  .app-main--stock,
+  .stock-list,
+  .notifications-page,
+  .notifications-page__top,
+  .admin-layout,
+  .cart-page-modern,
+  .my-account,
+  .login-page {
+    background: var(--bg) !important;
+  }
+
+  .sidebar,
+  .admin-sidebar,
+  .admin-topbar,
+  .cart-sheet,
+  .my-account__card,
+  .login-card,
+  .product-card,
+  .notif-offer-card,
+  .accounts-panel,
+  .add-product-form,
+  .create-salesman-form {
+    background: var(--surface) !important;
+    border-color: var(--border) !important;
+    box-shadow: var(--shadow);
+  }
+
+  .admin-nav-btn:hover,
+  .filter-section-header:hover,
+  .stock-list__page-btn:hover:not(:disabled),
+  .stock-list__cart-reopen:hover,
+  .stock-list__cart-close:hover,
+  .mobile-filters-trigger:hover {
+    background: #1b2435 !important;
+  }
+
+  /* Text */
+  .notifications-page__title,
+  .notifications-page__section-title,
+  .cart-sheet__head h1,
+  .cart-item-card__title,
+  .my-account__title,
+  .my-account__name,
+  .login-title,
+  .product-card__title,
+  .product-card__price,
+  .stock-detail-title,
+  .stock-list__subnav-title {
+    color: var(--text) !important;
+  }
+
+  .notifications-page__subtitle,
+  .notifications-page__back,
+  .cart-empty,
+  .cart-item-card__meta,
+  .my-account__subtitle,
+  .my-account__loading,
+  .login-field span,
+  .admin-topbar p,
+  .stock-list__page-info,
+  .stock-list__subnav-meta {
+    color: var(--text-muted) !important;
+  }
+
+  .notif-offer-card__summary,
+  .notif-offer-card__value,
+  .notif-offer-card__status,
+  .notif-offer-card__title,
+  .notifications-page__section-title {
+    color: #f8fafc !important;
+  }
+
+  .notif-offer-card__label,
+  .notif-offer-card__time {
+    color: #cbd5e1 !important;
+  }
+
+  /* Inputs and controls */
+  .login-field input,
+  .my-account__input,
+  .filter-price input,
+  .sidebar-filter-input input[type='text'],
+  .orders-panel__month select,
+  .stock-list__select,
+  .stock-list__cart-reopen,
+  .mobile-filters-trigger,
+  .mobile-filters-dropdown,
+  .cart-qty-stepper button {
+    background: var(--input-bg) !important;
+    color: var(--text) !important;
+    border-color: var(--input-border) !important;
+  }
+
+  .orders-status-tab {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  .inventory-category-tab {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  .orders-status-tab:hover {
+    background: #1b2435 !important;
+  }
+
+  .inventory-category-tab:hover {
+    background: #1b2435 !important;
+  }
+
+  .orders-status-tab.active {
+    border-color: var(--accent) !important;
+    background: color-mix(in srgb, var(--accent) 20%, var(--surface)) !important;
+    color: #dbeafe !important;
+  }
+
+  .inventory-category-tab.active {
+    border-color: var(--accent) !important;
+    background: color-mix(in srgb, var(--accent) 20%, var(--surface)) !important;
+    color: #dbeafe !important;
+  }
+
+  .cart-item-card__media img,
+  .cart-item-card__ph,
+  .stock-detail-img,
+  .product-card__image-wrapper,
+  .product-card__stock-indicator {
+    background: #0f172a !important;
+    border-color: var(--border) !important;
+  }
+
+  .stock-detail-modal,
+  .stock-detail-close,
+  .product-card__specs,
+  .product-card__spec-item {
+    background: var(--surface-soft) !important;
+    border-color: var(--border) !important;
+  }
+
+  .stock-detail-close:hover {
+    background: #1f2a3d !important;
+  }
+
+  /* Login and account */
+  .login-info-panel {
+    background: linear-gradient(180deg, #1e3a8a 0%, #1d4ed8 100%) !important;
+  }
+
+  .login-field input {
+    color: #e5efff !important;
+    caret-color: #e5efff !important;
+  }
+
+  .login-field input::placeholder {
+    color: #9fb2d6 !important;
+  }
+
+  .login-field input:-webkit-autofill,
+  .login-field input:-webkit-autofill:hover,
+  .login-field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #e5efff !important;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  .my-account__status--ok {
+    background: rgba(5, 150, 105, 0.18) !important;
+    border-color: rgba(52, 211, 153, 0.45) !important;
+    color: #86efac !important;
+  }
+
+  .my-account__status--pending {
+    background: rgba(217, 119, 6, 0.18) !important;
+    border-color: rgba(251, 191, 36, 0.45) !important;
+    color: #fcd34d !important;
+  }
+
+  /* Cart and notices */
+  .cart-summary-row,
+  .cart-summary-row strong,
+  .cart-item-card__qty > span {
+    color: var(--text) !important;
+  }
+
+  .cart-msg-lite {
+    background: rgba(146, 64, 14, 0.2) !important;
+    color: #fdba74 !important;
+    border-color: rgba(245, 158, 11, 0.45) !important;
+  }
+
+  .wholesale-pending-notice {
+    background: linear-gradient(180deg, #1e1b4b 0%, #312e81 100%) !important;
+    border-bottom-color: #4f46e5 !important;
+    color: #c7d2fe !important;
+  }
+
+  .wholesale-pending-notice__close:hover {
+    background: rgba(199, 210, 254, 0.16) !important;
+    color: #e0e7ff !important;
+  }
+}

@@ -1,0 +1,290 @@
+/**
+ * Wache — Production-ready responsive display system
+ * Breakpoints: Mobile (320–767) | Tablet (768–1279) | Desktop (1280+)
+ * Uses clamp() for fluid typography, CSS custom properties, safe areas.
+ */
+
+/* ==========================================================================
+   BASE (Mobile 320px–374px) — 4 columns, smallest touch targets
+   ========================================================================== */
+:root {
+  /* Container */
+  --container-max: 100%;
+  --container-padding: 1rem;
+  --container-margin: 0 auto;
+
+  /* Base font size for rem calculations (1rem = 14px here) */
+  --font-size-base: 14px;
+
+  /* Grid */
+  --grid-columns: 4;
+  --gutter: 12px;
+  --gutter-rem: 0.75rem;
+
+  /* Spacing scale (multipliers of base unit 4px) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* Touch target minimum (44x44px for mobile) */
+  --touch-min: 44px;
+  --touch-min-rem: 2.75rem;
+
+  /* Safe area insets for notched devices */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  /* Typography scale — fluid with clamp(min, preferred, max) */
+  --text-xs: clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.775rem + 0.2vw, 0.875rem);
+  --text-base: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+  --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 1.25rem + 1.25vw, 1.875rem);
+  --text-4xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.25rem);
+
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+}
+
+/* ==========================================================================
+   Mobile 375px–424px
+   ========================================================================== */
+@media (min-width: 375px) {
+  :root {
+    --container-padding: 1.125rem;
+    --font-size-base: 14.5px;
+    --gutter: 14px;
+    --gutter-rem: 0.875rem;
+  }
+}
+
+/* ==========================================================================
+   Mobile 425px–767px
+   ========================================================================== */
+@media (min-width: 425px) {
+  :root {
+    --container-padding: 1.25rem;
+    --font-size-base: 15px;
+    --gutter: 16px;
+    --gutter-rem: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Tablet 768px–1023px (portrait) — 8 columns
+   ========================================================================== */
+@media (min-width: 768px) {
+  :root {
+    --container-max: 720px;
+    --container-padding: 1.5rem;
+    --font-size-base: 15px;
+    --grid-columns: 8;
+    --gutter: 20px;
+    --gutter-rem: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   Tablet 1024px–1279px (landscape)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  :root {
+    --container-max: 960px;
+    --container-padding: 1.5rem;
+    --font-size-base: 16px;
+    --gutter: 24px;
+    --gutter-rem: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Desktop 1280px–1439px — 12 columns
+   ========================================================================== */
+@media (min-width: 1280px) {
+  :root {
+    --container-max: 1200px;
+    --container-padding: 1.5rem;
+    --font-size-base: 16px;
+    --grid-columns: 12;
+    --gutter: 24px;
+    --gutter-rem: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Desktop 1440px–1919px
+   ========================================================================== */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1320px;
+    --container-padding: 2rem;
+    --gutter: 32px;
+    --gutter-rem: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Desktop 1920px+
+   ========================================================================== */
+@media (min-width: 1920px) {
+  :root {
+    --container-max: 1400px;
+    --container-padding: 2rem;
+    --gutter: 32px;
+    --gutter-rem: 2rem;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL: Apply base font size to html for rem scaling
+   ========================================================================== */
+html {
+  font-size: var(--font-size-base);
+  /* Safe area: extend padding on notched devices */
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+/* ==========================================================================
+   LAYOUT: Container utility — max-width + horizontal padding
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: var(--container-margin);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container--full {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   TOUCH TARGETS: Minimum 44x44px for interactive elements on touch devices
+   ========================================================================== */
+@media (pointer: coarse) {
+  .touch-target,
+  button:not(.no-touch-target),
+  a[role="button"],
+  .nav a,
+  .cart-link,
+  .pagination button,
+  .product-card-actions-wrap button,
+  .product-card-view-details,
+  .product-detail-close,
+  .product-detail-arrow,
+  .filter-option,
+  .filter-section-header {
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Allow override for elements that must stay small */
+  button.no-touch-target,
+  .no-touch-target {
+    min-width: unset;
+    min-height: unset;
+  }
+}
+
+/* ==========================================================================
+   THEME OVERRIDES
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --input-bg: #0f1a30;
+    --input-border: #2b3d60;
+  }
+}
+
+/* Force light theme (default for this project) */
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --accent: #007bff;
+  --accent-hover: #0069d9;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --input-bg: #0f1a30;
+  --input-border: #2b3d60;
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   HIGH-DPI / RETINA: Prefer crisp images when available
+   ========================================================================== */
+/* Use in components: background-image: var(--img-logo-2x); */
+/* Define per-image in your theme or component:
+   --img-hero: image-set(
+     url("img/hero.webp") 1x,
+     url("img/hero@2x.webp") 2x
+   );
+*/
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITY CLASSES (optional use)
+   ========================================================================== */
+.heading-1 { font-size: var(--text-4xl); font-weight: 800; line-height: var(--leading-tight); }
+.heading-2 { font-size: var(--text-3xl); font-weight: 700; line-height: var(--leading-snug); }
+.heading-3 { font-size: var(--text-2xl); font-weight: 700; line-height: var(--leading-snug); }
+.heading-4 { font-size: var(--text-xl); font-weight: 600; line-height: var(--leading-snug); }
+.heading-5 { font-size: var(--text-lg); font-weight: 600; line-height: var(--leading-normal); }
+.heading-6 { font-size: var(--text-base); font-weight: 600; line-height: var(--leading-normal); }
+.body { font-size: var(--text-base); line-height: var(--leading-normal); }
+.body-sm { font-size: var(--text-sm); line-height: var(--leading-normal); }
+.caption { font-size: var(--text-xs); line-height: var(--leading-normal); color: var(--text-muted); }

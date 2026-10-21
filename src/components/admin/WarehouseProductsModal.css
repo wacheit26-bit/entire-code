@@ -1,0 +1,199 @@
+.warehouse-products-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.warehouse-products-modal {
+  width: min(960px, 100%);
+  max-height: min(85vh, 900px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.warehouse-products-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.warehouse-products-modal__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.warehouse-products-modal__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.warehouse-products-modal__lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+
+.warehouse-products-modal__close {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #64748b;
+  padding: 0.15rem 0.35rem;
+}
+
+.warehouse-products-modal__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1.15rem;
+  font-size: 0.88rem;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.warehouse-products-modal__status,
+.warehouse-products-modal__error,
+.warehouse-products-modal__empty {
+  padding: 1rem 1.15rem;
+  margin: 0;
+}
+
+.warehouse-products-modal__error {
+  color: #b91c1c;
+}
+
+.warehouse-products-modal__empty {
+  color: #64748b;
+}
+
+.warehouse-products-modal__table-wrap {
+  overflow: auto;
+  flex: 1;
+  padding: 0 1.15rem;
+}
+
+.warehouse-products-modal__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.warehouse-products-modal__table th,
+.warehouse-products-modal__table td {
+  padding: 0.55rem 0.45rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.warehouse-products-modal__table th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.warehouse-products-modal__dest {
+  display: block;
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.warehouse-products-modal__meta {
+  display: block;
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 0.12rem;
+}
+
+.warehouse-products-modal__summary-warn {
+  color: #92400e;
+}
+
+.warehouse-products-modal__photos-cell {
+  min-width: 120px;
+}
+
+.warehouse-products-modal__photo-count {
+  display: block;
+  font-size: 0.78rem;
+  color: #166534;
+  margin-bottom: 0.25rem;
+}
+
+.warehouse-products-modal__photo-missing {
+  display: block;
+  font-size: 0.78rem;
+  color: #b45309;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.warehouse-products-modal__upload-btn {
+  font-size: 0.75rem;
+  padding: 0.28rem 0.5rem;
+}
+
+.warehouse-products-modal__photo-hint {
+  display: block;
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 0.2rem;
+}
+
+.warehouse-products-modal__photo-error {
+  display: block;
+  font-size: 0.7rem;
+  color: #b91c1c;
+  margin-top: 0.2rem;
+}
+
+.warehouse-products-modal__footer {
+  padding: 0.85rem 1.15rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.warehouses-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.warehouses-view-products-btn {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.warehouses-view-products-btn:hover:not(:disabled) {
+  background: #dbeafe;
+}
+
+.warehouses-list__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
