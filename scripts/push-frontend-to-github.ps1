@@ -28,7 +28,9 @@ $FrontendPaths = @(
   "README.md",
   "public",
   "src",
-  "scripts/push-frontend-to-github.ps1"
+  "scripts/push-frontend-to-github.ps1",
+  "scripts/hostinger-deploy-frontend.sh",
+  "docs/HOSTINGER-FRONTEND.md"
 )
 
 foreach ($path in $FrontendPaths) {
@@ -53,15 +55,18 @@ if ($remoteList -notcontains "frontend") {
 
 function Ensure-PublishRepo {
   if (Test-Path (Join-Path $PublishDir ".git")) {
-    Set-Location $PublishDir
-    git fetch origin 2>$null
-    if (git rev-parse origin/main 2>$null) {
-      git checkout main 2>$null
-      git reset --hard origin/main
+    Push-Location $PublishDir
+    $prevEap = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    git fetch origin 2>$null | Out-Null
+    if (git ls-remote --heads origin main 2>$null) {
+      git checkout main 2>$null | Out-Null
+      git reset --hard origin/main 2>$null | Out-Null
     } else {
-      git checkout -B main 2>$null
+      git checkout -B main 2>$null | Out-Null
     }
-    Set-Location $Root
+    $ErrorActionPreference = $prevEap
+    Pop-Location
     return
   }
 
