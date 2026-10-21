@@ -107,8 +107,9 @@ if (-not $PublishStatus) {
 
 git -c user.email="succ-cloud@users.noreply.github.com" -c user.name="succ-cloud" commit -m $Message
 
-$HasRemoteMain = git rev-parse origin/main 2>$null
-if ($HasRemoteMain) {
+git fetch origin 2>$null
+$remoteMain = git ls-remote --heads origin main 2>$null
+if ($remoteMain) {
   git pull --rebase origin main
   git push origin main
 } else {
