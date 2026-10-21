@@ -83,7 +83,18 @@ if (-not $ArchiveArgs.Count) {
 }
 
 Get-ChildItem -Path $PublishDir -Force | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
-& git -C $Root archive HEAD -- @ArchiveArgs | tar -x -C $PublishDir
+$zipFile = Join-Path $env:TEMP ("wache-frontend-{0}.zip" -f [guid]::NewGuid().ToString("n"))
+try {
+  & git -C $Root archive --format=zip -o $zipFile HEAD -- @ArchiveArgs
+  if (-not (Test-Path $zipFile)) {
+    Write-Error "git archive failed to create $zipFile"
+  }
+  Expand-Archive -Path $zipFile -DestinationPath $PublishDir -Force
+} finally {
+  if (Test-Path $zipFile) {
+    Remove-Item -Force $zipFile
+  }
+}
 
 Set-Location $PublishDir
 git add -A
