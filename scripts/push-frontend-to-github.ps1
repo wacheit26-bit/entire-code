@@ -70,13 +70,12 @@ function Ensure-PublishRepo {
     return
   }
 
-  if (Test-Path $PublishDir) {
-    Remove-Item -Recurse -Force $PublishDir
-  }
-  New-Item -ItemType Directory -Path $PublishDir | Out-Null
+  New-Item -ItemType Directory -Path $PublishDir -Force | Out-Null
   Set-Location $PublishDir
-  git init -b main | Out-Null
-  git remote add origin $FrontendRemoteUrl
+  if (-not (Test-Path ".git")) {
+    git init -b main | Out-Null
+    git remote add origin $FrontendRemoteUrl
+  }
   Set-Location $Root
 }
 
