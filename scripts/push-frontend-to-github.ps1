@@ -1,8 +1,17 @@
 # Publish Vite/React frontend to GitHub (wacherfrontend). Excludes server/ and build artifacts.
+#
+# Private repo: Git must authenticate as wacheit26-bit (not another GitHub account).
+# Option A — one-time in PowerShell (do not paste the token in chat):
+#   $env:WACHERFRONTEND_GITHUB_PAT = "ghp_xxxxxxxx"
+#   .\scripts\push-frontend-to-github.ps1 -Message "Frontend update"
+# Option B — Git Credential Manager: run `git ls-remote` on the repo URL and sign in as wacheit26-bit
+#   (PAT as password). Clear stale GitHub login if you see "Repository not found" on a private repo.
+#
 # Usage: .\scripts\push-frontend-to-github.ps1 [-Message "your commit message"]
 
 param(
-  [string]$Message = "Frontend update"
+  [string]$Message = "Frontend update",
+  [string]$GitHubPat = $env:WACHERFRONTEND_GITHUB_PAT
 )
 
 $ErrorActionPreference = "Stop"
@@ -13,8 +22,19 @@ if (-not (Test-Path "src\main.jsx")) {
   Write-Error "Run this from the Wache project root (src\main.jsx missing)."
 }
 
-$FrontendRemoteUrl = "https://github.com/wacheit26-bit/wacherfrontend.git"
-$PublishDir = Join-Path $Root ".frontend-publish"
+$FrontendRepo = "wacheit26-bit/wacherfrontend"
+$FrontendRemoteUrl = "https://github.com/$FrontendRepo.git"
+
+function Get-AuthenticatedRemoteUrl {
+  param([string]$Pat)
+  if ([string]::IsNullOrWhiteSpace($Pat)) {
+    return $FrontendRemoteUrl
+  }
+  $token = $Pat.Trim()
+  return "https://wacheit26-bit:${token}@github.com/$FrontendRepo.git"
+}
+
+$PushRemoteUrl = Get-AuthenticatedRemoteUrl -Pat $GitHubPat
 
 $FrontendPaths = @(
   "index.html",
@@ -41,87 +61,65 @@ foreach ($path in $FrontendPaths) {
 
 $Status = git status --porcelain -- @FrontendPaths
 if ($Status) {
-  git -c user.email="succ-cloud@users.noreply.github.com" -c user.name="succ-cloud" commit -m $Message
+  git -c user.email="wacheit26-bit@users.noreply.github.com" -c user.name="wacheit26-bit" commit -m $Message
   Write-Host "Committed frontend changes on local main."
 } else {
   Write-Host "No frontend path changes to commit on local main."
 }
 
 $remoteList = @(git remote 2>$null)
-if ($remoteList -notcontains "frontend") {
+if ($remoteList -contains "frontend") {
+  git remote set-url frontend $FrontendRemoteUrl
+} else {
   git remote add frontend $FrontendRemoteUrl
-  Write-Host "Added git remote 'frontend' -> $FrontendRemoteUrl"
 }
 
-function Ensure-PublishRepo {
-  if (Test-Path (Join-Path $PublishDir ".git")) {
-    Push-Location $PublishDir
-    $prevEap = $ErrorActionPreference
-    $ErrorActionPreference = "Continue"
-    git fetch origin 2>$null | Out-Null
-    if (git ls-remote --heads origin main 2>$null) {
-      git checkout main 2>$null | Out-Null
-      git reset --hard origin/main 2>$null | Out-Null
-    } else {
-      git checkout -B main 2>$null | Out-Null
-    }
-    $ErrorActionPreference = $prevEap
-    Pop-Location
-    return
-  }
-
-  New-Item -ItemType Directory -Path $PublishDir -Force | Out-Null
-  Set-Location $PublishDir
-  if (-not (Test-Path ".git")) {
-    git init -b main | Out-Null
-    git remote add origin $FrontendRemoteUrl
-  }
-  Set-Location $Root
+Write-Host "Checking access to $FrontendRemoteUrl ..."
+$prevEap = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
+$probe = git ls-remote $PushRemoteUrl HEAD 2>&1
+$ErrorActionPreference = $prevEap
+if (-not $probe -or ($probe -match "not found|Authentication failed|Permission denied|Invalid username or password")) {
+  Write-Host ""
+  Write-Host "Cannot access the private repo. GitHub often says 'Repository not found' when:"
+  Write-Host "  - You are signed in as a different GitHub user (e.g. succ-cloud), or"
+  Write-Host "  - No PAT is configured for wacheit26-bit."
+  Write-Host ""
+  Write-Host "Fix: GitHub -> Settings -> Developer settings -> Personal access tokens ->"
+  Write-Host "  classic token with 'repo' scope for wacheit26-bit, then in THIS terminal:"
+  Write-Host '  $env:WACHERFRONTEND_GITHUB_PAT = "ghp_your_token_here"'
+  Write-Host "  .\scripts\push-frontend-to-github.ps1 -Message `"$Message`""
+  Write-Host ""
+  exit 1
 }
-
-Ensure-PublishRepo
 
 $ArchiveArgs = $FrontendPaths | Where-Object { Test-Path (Join-Path $Root $_) }
 if (-not $ArchiveArgs.Count) {
   Write-Error "Nothing to publish - no frontend paths found."
 }
 
-$stagingDir = Join-Path $PublishDir "_staging"
-if (Test-Path $stagingDir) {
-  Remove-Item -Recurse -Force $stagingDir -ErrorAction SilentlyContinue
-}
-New-Item -ItemType Directory -Path $stagingDir | Out-Null
+$PublishDir = Join-Path $env:TEMP ("wacherfrontend-publish-{0}" -f [guid]::NewGuid().ToString("n"))
+New-Item -ItemType Directory -Path $PublishDir | Out-Null
+
 $zipFile = Join-Path $env:TEMP ("wache-frontend-{0}.zip" -f [guid]::NewGuid().ToString("n"))
 try {
   & git -C $Root archive --format=zip -o $zipFile HEAD -- @ArchiveArgs
   if (-not (Test-Path $zipFile)) {
     Write-Error "git archive failed to create $zipFile"
   }
-  Expand-Archive -Path $zipFile -DestinationPath $stagingDir -Force
-  Get-ChildItem -Path $stagingDir -Force | ForEach-Object {
-    Copy-Item -Path $_.FullName -Destination $PublishDir -Recurse -Force
-  }
+  Expand-Archive -Path $zipFile -DestinationPath $PublishDir -Force
 } finally {
   if (Test-Path $zipFile) {
     Remove-Item -Force $zipFile
   }
-  if (Test-Path $stagingDir) {
-    Remove-Item -Recurse -Force $stagingDir -ErrorAction SilentlyContinue
-  }
 }
 
-Set-Location $PublishDir
+Push-Location $PublishDir
+git init -b main | Out-Null
+git remote add origin $PushRemoteUrl
 git add -A
-$PublishStatus = git status --porcelain
-if (-not $PublishStatus) {
-  Write-Host "No changes to publish (frontend repo already up to date)."
-  Set-Location $Root
-  exit 0
-}
+git -c user.email="wacheit26-bit@users.noreply.github.com" -c user.name="wacheit26-bit" commit -m $Message
 
-git -c user.email="succ-cloud@users.noreply.github.com" -c user.name="succ-cloud" commit -m $Message
-
-git fetch origin 2>$null
 $remoteMain = git ls-remote --heads origin main 2>$null
 if ($remoteMain) {
   git pull --rebase origin main
@@ -129,6 +127,8 @@ if ($remoteMain) {
 } else {
   git push -u origin main
 }
+Pop-Location
 
+Remove-Item -Recurse -Force $PublishDir -ErrorAction SilentlyContinue
 Set-Location $Root
-Write-Host "Pushed frontend to $FrontendRemoteUrl on branch main."
+Write-Host "Pushed frontend to https://github.com/$FrontendRepo (branch main)."
