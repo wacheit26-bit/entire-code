@@ -30,8 +30,30 @@ function Get-AuthenticatedRemoteUrl {
   if ([string]::IsNullOrWhiteSpace($Pat)) {
     return $FrontendRemoteUrl
   }
-  $token = $Pat.Trim()
+  $token = [uri]::EscapeDataString($Pat.Trim())
   return "https://wacheit26-bit:${token}@github.com/$FrontendRepo.git"
+}
+
+function Invoke-GitWithPat {
+  param([string[]]$GitArgs)
+  & git -c credential.helper= @GitArgs
+  return $LASTEXITCODE
+}
+
+function Test-GitHubRepoAccess {
+  param([string]$Url)
+  $prevEap = $ErrorActionPreference
+  $ErrorActionPreference = "Continue"
+  $out = git -c credential.helper= ls-remote $Url 2>&1 | Out-String
+  $code = $LASTEXITCODE
+  $ErrorActionPreference = $prevEap
+  if ($code -ne 0) {
+    return @{ Ok = $false; Output = $out.Trim() }
+  }
+  if ($out -match "not granted|not found|Authentication failed|Permission denied|403|Invalid username") {
+    return @{ Ok = $false; Output = $out.Trim() }
+  }
+  return @{ Ok = $true; Output = $out.Trim() }
 }
 
 $PushRemoteUrl = Get-AuthenticatedRemoteUrl -Pat $GitHubPat
@@ -75,19 +97,19 @@ if ($remoteList -contains "frontend") {
 }
 
 Write-Host "Checking access to $FrontendRemoteUrl ..."
-$prevEap = $ErrorActionPreference
-$ErrorActionPreference = "Continue"
-$probe = git ls-remote $PushRemoteUrl HEAD 2>&1
-$ErrorActionPreference = $prevEap
-if (-not $probe -or ($probe -match "not found|Authentication failed|Permission denied|Invalid username or password")) {
+$access = Test-GitHubRepoAccess -Url $PushRemoteUrl
+if (-not $access.Ok) {
   Write-Host ""
-  Write-Host "Cannot access the private repo. GitHub often says 'Repository not found' when:"
-  Write-Host "  - You are signed in as a different GitHub user (e.g. succ-cloud), or"
-  Write-Host "  - No PAT is configured for wacheit26-bit."
+  Write-Host "Cannot access wacheit26-bit/wacherfrontend with this token."
+  if ($access.Output) {
+    Write-Host $access.Output
+  }
   Write-Host ""
-  Write-Host "Fix: GitHub -> Settings -> Developer settings -> Personal access tokens ->"
-  Write-Host "  classic token with 'repo' scope for wacheit26-bit, then in THIS terminal:"
-  Write-Host '  $env:WACHERFRONTEND_GITHUB_PAT = "ghp_your_token_here"'
+  Write-Host "Use a classic PAT (starts with ghp_) on account wacheit26-bit with the 'repo' scope."
+  Write-Host "Fine-grained tokens (github_pat_) need Contents: Read and write on this repo."
+  Write-Host "Clear wrong GitHub login: git credential-manager github logout"
+  Write-Host ""
+  Write-Host '  $env:WACHERFRONTEND_GITHUB_PAT = "ghp_..."'
   Write-Host "  .\scripts\push-frontend-to-github.ps1 -Message `"$Message`""
   Write-Host ""
   exit 1
@@ -121,9 +143,9 @@ git add -A
 git -c user.email="wacheit26-bit@users.noreply.github.com" -c user.name="wacheit26-bit" commit -m $Message
 
 $ErrorActionPreference = "Continue"
-$remoteMain = git ls-remote --heads origin main 2>&1
+$remoteMain = git -c credential.helper= ls-remote --heads origin main 2>&1 | Out-String
 $ErrorActionPreference = "Stop"
-if ($remoteMain -match "not granted|Authentication failed|Permission denied|Invalid username") {
+if ($remoteMain -match "not granted|Authentication failed|Permission denied|Invalid username|403") {
   Write-Host ""
   Write-Host "GitHub rejected this token for wacheit26-bit/wacherfrontend."
   Write-Host "Use a classic PAT with the 'repo' scope, owned by wacheit26-bit."
@@ -135,12 +157,12 @@ if ($remoteMain -match "not granted|Authentication failed|Permission denied|Inva
 }
 
 if ($remoteMain -match "refs/heads/main") {
-  git pull --rebase origin main
-  git push origin main
+  Invoke-GitWithPat -GitArgs @("pull", "--rebase", "origin", "main") | Out-Null
+  $pushCode = Invoke-GitWithPat -GitArgs @("push", "origin", "main")
 } else {
-  git push -u origin main
+  $pushCode = Invoke-GitWithPat -GitArgs @("push", "-u", "origin", "main")
 }
-if ($LASTEXITCODE -ne 0) {
+if ($pushCode -ne 0) {
   Write-Host "git push failed. Check token scopes and that the repo exists under wacheit26-bit."
   Pop-Location
   Remove-Item -Recurse -Force $PublishDir -ErrorAction SilentlyContinue
