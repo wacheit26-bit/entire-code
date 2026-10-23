@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run on Hostinger over SSH after cloning watcher3frontend.
+# Run on Hostinger over SSH after cloning wacherfrontend.
 # Usage:
 #   PUBLIC_HTML="$HOME/domains/wacheelectronics.com/public_html" ./scripts/hostinger-deploy-frontend.sh
 
@@ -12,12 +12,12 @@ PUBLIC_HTML="${PUBLIC_HTML:-$HOME/domains/wacheelectronics.com/public_html}"
 ENV_FILE="${ENV_FILE:-$ROOT/.env.production}"
 
 if [[ ! -f package.json ]]; then
-  echo "Run this from the watcher3frontend repo root (package.json missing)." >&2
+  echo "Run this from the wacherfrontend repo root (package.json missing)." >&2
   exit 1
 fi
 
 if [[ ! -d .git ]]; then
-  echo "Expected a git clone of watcher3frontend." >&2
+  echo "Expected a git clone of wacherfrontend." >&2
   exit 1
 fi
 

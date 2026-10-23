@@ -1,4 +1,4 @@
-# Publish Vite/React frontend to GitHub (watcher3frontend). Excludes server/ and build artifacts.
+# Publish Vite/React frontend to GitHub (wacherfrontend). Excludes server/ and build artifacts.
 # Usage: .\scripts\push-frontend-to-github.ps1 [-Message "your commit message"]
 
 param(
@@ -13,7 +13,7 @@ if (-not (Test-Path "src\main.jsx")) {
   Write-Error "Run this from the Wache project root (src\main.jsx missing)."
 }
 
-$FrontendRemoteUrl = "https://github.com/succ-cloud/watcher3frontend.git"
+$FrontendRemoteUrl = "https://github.com/wacheit26-bit/wacherfrontend.git"
 $PublishDir = Join-Path $Root ".frontend-publish"
 
 $FrontendPaths = @(

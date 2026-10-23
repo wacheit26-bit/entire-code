@@ -1,6 +1,6 @@
-# Deploy watcher3frontend to Hostinger (Business, SSH)
+# Deploy wacherfrontend to Hostinger (Business, SSH)
 
-Frontend repo: https://github.com/succ-cloud/watcher3frontend  
+Frontend repo: https://github.com/wacheit26-bit/wacherfrontend  
 API stays on your existing backend (not deployed on Hostinger for this setup).
 
 ## SSH connection (from your PC)
@@ -41,8 +41,8 @@ If Node is not available over SSH, build locally and upload only `dist/` (see **
 ```bash
 mkdir -p ~/repos
 cd ~/repos
-git clone https://github.com/succ-cloud/watcher3frontend.git
-cd watcher3frontend
+git clone https://github.com/wacheit26-bit/wacherfrontend.git
+cd wacherfrontend
 ```
 
 Create production env for the build (matches `.env.example`):
@@ -100,7 +100,7 @@ scp -P 65002 -r dist/* u947699366@46.202.183.117:domains/wacheelectronics.com/pu
 On the server (Plan A):
 
 ```bash
-cd ~/repos/watcher3frontend
+cd ~/repos/wacherfrontend
 git pull origin main
 npm ci
 npm run build
@@ -113,7 +113,7 @@ From your dev machine you can also run `.\scripts\push-frontend-to-github.ps1` f
 
 ## hPanel Git (optional)
 
-In Hostinger: **Websites → Git** → connect **succ-cloud/watcher3frontend** → deploy to `public_html`.  
+In Hostinger: **Websites → Git** → connect **wacheit26-bit/wacherfrontend** → deploy to `public_html`.  
 You still need a **build step** (Node in hPanel or build locally before deploy). SSH + script above is usually simpler for Vite.
 
 ## Troubleshooting
