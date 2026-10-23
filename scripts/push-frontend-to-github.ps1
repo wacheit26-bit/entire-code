@@ -120,12 +120,32 @@ git remote add origin $PushRemoteUrl
 git add -A
 git -c user.email="wacheit26-bit@users.noreply.github.com" -c user.name="wacheit26-bit" commit -m $Message
 
-$remoteMain = git ls-remote --heads origin main 2>$null
-if ($remoteMain) {
+$ErrorActionPreference = "Continue"
+$remoteMain = git ls-remote --heads origin main 2>&1
+$ErrorActionPreference = "Stop"
+if ($remoteMain -match "not granted|Authentication failed|Permission denied|Invalid username") {
+  Write-Host ""
+  Write-Host "GitHub rejected this token for wacheit26-bit/wacherfrontend."
+  Write-Host "Use a classic PAT with the 'repo' scope, owned by wacheit26-bit."
+  Write-Host "If you use a fine-grained token, grant Contents: Read and write on this repo."
+  Pop-Location
+  Remove-Item -Recurse -Force $PublishDir -ErrorAction SilentlyContinue
+  Set-Location $Root
+  exit 1
+}
+
+if ($remoteMain -match "refs/heads/main") {
   git pull --rebase origin main
   git push origin main
 } else {
   git push -u origin main
+}
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "git push failed. Check token scopes and that the repo exists under wacheit26-bit."
+  Pop-Location
+  Remove-Item -Recurse -Force $PublishDir -ErrorAction SilentlyContinue
+  Set-Location $Root
+  exit 1
 }
 Pop-Location
 
